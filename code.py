@@ -5,6 +5,6 @@ print()
 have_bedroom_key = 'false'
 print("You are locked inside an aristocratic bedroom, there's a king size bed next to you with a duvet on it, and theres two comfy looking cushions, you feel like you could sleep here. ")
 if have_bedroom_key == 'false':
-  print("Now, lets find that key")
+  print("'Now, lets find that key'")
 if have_bedroom_key == 'true':
   print("Alright, it's time to go")
