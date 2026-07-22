@@ -8,3 +8,10 @@ if have_bedroom_key == 'false':
   print("Now, lets find that key")
 if have_bedroom_key == 'true':
   print("Alright, it's time to go")
+  
+print("What do you do?")
+  input("Do you try the door or do you search the room?")
+  if input = "search the room"
+    input("Where in the room do you check?, there are 3 spots a pillowcase, a vase, and behind the curtain")
+  
+  
