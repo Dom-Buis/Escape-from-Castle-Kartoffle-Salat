@@ -9,20 +9,21 @@ if have_bedroom_key == 'false':
 if have_bedroom_key == 'true':
   print("Alright, it's time to go")
 
-  print("What do you do?")
-  search = input("Do you try the door or do you search the room?")
-  if search = "search the room":
+print("What do you do?")
+search = input("Do you try the door or do you search the room? ")
+if search == "search the room":
+    where = input("Where in the room do you check?, there are 3 spots, there's a pillowcase, there's the vase, and behind the curtain ")
     while where != "a pillowcase":
-      where = input("Where in the room do you check?, there are 3 spots, a pillowcase, a vase, and behind the curtain")
-        if where = "behind the curtain":
+        if where == "behind the curtain":
           print("Wrong place, try again.")
-        elif where = "the vase":
+          break
+        elif where == "the vase":
           print("Wrong place, try again.")
-        elif where = "a pillowcase"
+          break
+        elif where == "a pillowcase":
           print("You checked the pillowcase, and you found the key")
           have_bedroom_key = 'true'
           break
         else:
           print("that isn't a valid option")
-  
   
