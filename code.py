@@ -10,9 +10,9 @@ if have_bedroom_key == 'true':
   print("Alright, it's time to go")
 
 print("What do you do?")
-search = input("Do you try the door or do you search the room? ")
-if search == "search the room":
-    
+while True:
+  search = input("Do you try the door or do you search the room? ")
+  if search == "search the room":
     while True:
         where = input("Where in the room do you check?, there are 3 spots, there's a pillowcase, there's the vase, and behind the curtain ")
         if where == "behind the curtain":
@@ -25,3 +25,5 @@ if search == "search the room":
           break
         else:
           print("that isn't a valid option")
+  else:
+    print("that isn't a valid option")
