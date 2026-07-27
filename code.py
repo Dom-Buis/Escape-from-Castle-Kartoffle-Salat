@@ -27,8 +27,8 @@ while True:
           print("that isn't a valid option")
   elif search == "try the door":
       print("The door won't budge.")
-    if have_bedroom_key == 'true':
-        key_used = input("Try the key?")
+      if have_bedroom_key == 'true':
+        key_used = input("Try the key? ")
         if key_used == "yes":
             print("The door opens and you exit the first room.")
             break
@@ -36,5 +36,5 @@ while True:
             print("Maybe you should try the key.")
         else:
             print("That's not even a option")
-else:
+  else:
     print("that isn't a valid option")
