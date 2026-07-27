@@ -25,16 +25,16 @@ while True:
           break
         else:
           print("that isn't a valid option")
-    elif search == "try the door":
+  elif search == "try the door":
       print("The door won't budge.")
-      if have_bedroom_key = 'true'
+    if have_bedroom_key == 'true':
         key_used = input("Try the key?")
-          if key_used == "yes"
+        if key_used == "yes":
             print("The door opens and you exit the first room.")
             break
-          elif key_used == "no"
+        elif key_used == "no":
             print("Maybe you should try the key.")
-          else:
+        else:
             print("That's not even a option")
-    else:
-      print("that isn't a valid option")
+else:
+    print("that isn't a valid option")
