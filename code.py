@@ -40,6 +40,8 @@ while True:
             print("That's not even a option")
   else:
     print("that isn't a valid option")
+
+print("You are now in the manor's hallway, there's doors to every room in the mansion, though the door to the kitcheb
 end = time.time()
 length = end - start
 num = length
