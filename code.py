@@ -6,11 +6,11 @@ print()
 #first room
 have_bedroom_key = 'false'
 print("You are locked inside an aristocratic bedroom, there's a king size bed next to you with a duvet on it, and theres two comfy looking cushions, you feel like you could sleep here. ")
-if have_bedroom_key == 'false':
-  print("'Now, lets find that key'")
-if have_bedroom_key == 'true':
-  print("Alright, it's time to go")
-
+def bedroom_key():
+  if have_bedroom_key == 'false':
+    print("'Now, lets find that key'")
+  if have_bedroom_key == 'true':
+    print("Alright, it's time to go")
 print("What do you do?")
 while True:
   search = input("Do you try the door or do you search the room? ")
@@ -41,7 +41,7 @@ while True:
   else:
     print("that isn't a valid option")
 
-print("You are now in the manor's hallway, there's doors to every room in the mansion, though the door to the kitcheb
+print("You are now in the manor's hallway, there's doors to every room in the mansion, though the door to the kitchen")
 end = time.time()
 length = end - start
 num = length
