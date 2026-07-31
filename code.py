@@ -13,10 +13,10 @@ def bedroom_key():
     print("Alright, it's time to go")
 print("What do you do?")
 while True:
-  search = input("Do you try the door or do you search the room? ")
+  search = input("Do you try the door or do you search the room? ").lower()
   if search == "search the room":
     while True:
-        where = input("Where in the room do you check?, there are 3 spots, there's a pillowcase, there's the vase, and behind the curtain ")
+        where = input("Where in the room do you check?, there are 3 spots, there's a pillowcase, there's the vase, and behind the curtain ").lower()
         if where == "behind the curtain":
           print("Wrong place, try again.")
         elif where == "the vase":
@@ -30,11 +30,11 @@ while True:
   elif search == "try the door":
       print("The door won't budge.")
       if have_bedroom_key == 'true':
-        key_used = input("Try the key? ")
-        if key_used == 'yes' or 'YES' or 'Yes' or 'YEs' or 'yEs' or 'yES' or 'yeS':
+        key_used = input("Try the key? ").upper()
+        if key_used == 'YES':
             print("The door opens and you exit the first room.")
             break
-        elif key_used == "no":
+        elif key_used == "NO":
             print("Maybe you should try the key.")
         else:
             print("That's not even a option")
