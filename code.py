@@ -41,9 +41,9 @@ while True:
   else:
     print("that isn't a valid option")
 
-print("You are now in the manor's hallway, there's doors to every room in the mansion, though the door to the kitchen")
+print("You are now in the manor's hallway, there's doors to every room in the mansion, though the door to the dining room")
 while True:
-  rooms = input("Where do you go")
+  rooms = input("Where do you go (dining room or bedroom)? ")
   if rooms == "bedroom":
       print("You go back into the bedroom, you don't find anything there.")
   elif rooms == "dining room":
