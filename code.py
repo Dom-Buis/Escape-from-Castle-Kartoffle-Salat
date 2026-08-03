@@ -44,9 +44,9 @@ while True:
 print("You are now in the manor's hallway, there's doors to every room in the mansion, though the door to the kitchen")
 while True:
   rooms = input("Where do you go")
-    if rooms == "bedroom":
+  if rooms == "bedroom":
       print("You go back into the bedroom, you don't find anything there.")
-    elif rooms == "dining room"
+  elif rooms == "dining room":
       print("You explore the dining room and you find a vase.")
         
 end = time.time()
