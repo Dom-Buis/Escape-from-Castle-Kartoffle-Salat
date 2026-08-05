@@ -29,36 +29,36 @@ while True:
     while True:
         where = input("Where in the room do you check?, there are 3 spots, there's a pillowcase, there's the vase, and behind the curtain ")
         if where == "behind the curtain":
-          typing("Wrong place, try again.")
+          typing("Wrong place, try again.\n")
         elif where == "the vase":
-          typing("Wrong place, try again.")
+          typing("Wrong place, try again.\n")
         elif where == "a pillowcase":
-          typing("You checked the pillowcase, and you found the key")
+          typing("You checked the pillowcase, and you found the key\n")
           have_bedroom_key = 'true'
           break
         else:
           print("that isn't a valid option")
   elif search == "try the door":
-      typing2("The door won't budge.")
+      typing2("The door won't budge.\n")
       if have_bedroom_key == 'true':
         key_used = input("Try the key? ").upper()
         if key_used == 'YES':
-            typing2("The door opens and you exit the first room.")
+            typing2("The door opens and you exit the first room.\n")
             break
         elif key_used == 'NO':
-            typing("Maybe you should try the key.")
+            typing("Maybe you should try the key.\n")
         else:
             print("That's not even a option")
   else:
     print("that isn't a valid option")
 
-typing("You are now in the manor's hallway, there's doors to every room in the mansion, though the door to the dining room")
+typing("You are now in the manor's hallway, there's doors to every room in the mansion, though the door to the dining room is the only open one\n")
 while True:
   rooms = input("Where do you go (dining room or bedroom)? ")
   if rooms == "bedroom":
-      typing2("You go back into the bedroom, you don't find anything there.")
+      typing2("You go back into the bedroom, you don't find anything there.\n")
   elif rooms == "dining room":
-      typing2("You explore the dining room and you find a vase.")
+      typing2("You explore the dining room and you find a vase.\n")
         
 end = time.time()
 length = end - start
