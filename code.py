@@ -37,7 +37,7 @@ def bedroom_key():
 #code to escape the first room
 typing2("What do you do?\n")
 while True:
-  search = input(f"{INPUT_COLOUR}Do you try the door or do you search the room?{RESET} ").upper
+  search = input(f"{INPUT_COLOUR}Do you try the door or do you search the room?{RESET} ").upper()
   if search == "SEARCH THE ROOM":
     while True:
         #code to explore the first room
@@ -71,7 +71,7 @@ while True:
 #enter the hallway
 typing("You are now in the manor's hallway, there's doors to every room in the mansion, though the door to the dining room is the only open one\n")
 while True:
-  rooms = input(f"{INPUT_COLOUR}Where do you go, the dining room or  the bedroom)?{RESET} ").upper()
+  rooms = input(f"{INPUT_COLOUR}Where do you go, the dining room or  the bedroom?{RESET}").upper()
 
   #go back to the bedroom
   if rooms == "BEDROOM":
