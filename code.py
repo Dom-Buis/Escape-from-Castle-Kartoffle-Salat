@@ -1,4 +1,4 @@
-#import things
+##import things
 import sys
 import time
 
@@ -27,7 +27,7 @@ print()
 
 #first room
 have_bedroom_key = 'false'
-typing2("You are locked inside an aristocratic bedroom, there's a king size bed next to you with a duvet on it, and theres two comfy looking cushions, you feel like you could sleep here...\n ")
+typing2("You are locked inside an aristocratic bedroom.\nthere's a king size bed next to you with a duvet on it.\nand theres two comfy looking cushions.\nyou feel like you could sleep here...\n ")
 def bedroom_key():
   if have_bedroom_key == 'false':
     typing2("'Now, lets find that key'")
