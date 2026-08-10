@@ -41,7 +41,7 @@ while True:
   if search == "SEARCH THE ROOM":
     while True:
         #code to explore the first room
-        where = input(f"{INPUT_COLOUR}Where in the room do you check? There are 3 spots, there's a pillowcase, there's the vase, and there is behind the curtain.{RESET} ").upper
+        where = input(f"{INPUT_COLOUR}Where in the room do you check? There are 3 spots, there's a pillowcase, there's the vase, and there is behind the curtain.{RESET} ").upper()
         if where == "BEHIND THE CURTAIN":
           typing("Wrong place, try again.\n")
         elif where == "THE VASE":
