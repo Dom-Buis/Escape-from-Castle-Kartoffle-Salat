@@ -22,13 +22,12 @@ def typing2(text, delay=0.07):
         time.sleep(delay)
 
 #print original text/backstory
-typing(" You were on a hike in the alps. \n You felt the cold snow beneath your boots, you were doing well on the hike. \n Suddenly you slipped and hit your head on the ice, and you fell unconscious. \n Now you've woken up here, in the bedroom of a strange manor.")
+typing("You were on a hike in the alps. \n You felt the cold snow beneath your boots, you were doing well on the hike, but then you slipped and hit your head on the ice, and you fell unconscious. \n Now you've woken up here, in the bedroom of a strange manor.")
 print()
-print(' ')
 
 #first room
 have_bedroom_key = 'false'
-typing2("You are locked inside an aristocratic bedroom.\nthere's a king size bed next to you with a duvet on it.\nand theres two comfy looking cushions.\nyou feel like you could sleep here...\n ")
+typing2("You are locked inside an aristocratic bedroom, there's a king size bed next to you with a duvet on it, and theres two comfy looking cushions, you feel like you could sleep here...\n ")
 def bedroom_key():
   if have_bedroom_key == 'false':
     typing2("'Now, lets find that key'")
@@ -38,25 +37,24 @@ def bedroom_key():
 #code to escape the first room
 typing2("What do you do?\n")
 while True:
-  search = input(f"{INPUT_COLOUR}Do you try the door or do you search the room?{RESET} ")
-  if search == "search the room":
+  search = input(f"{INPUT_COLOUR}Do you try the door or do you search the room?{RESET} ").upper
+  if search == "SEARCH THE ROOM":
     while True:
         #code to explore the first room
-        where = input(f"{INPUT_COLOUR}Where in the room do you check?, there are 3 spots, there's a pillowcase, there's the vase, and behind the curtain{RESET} ")
-        if where == "behind the curtain":
+        where = input(f"{INPUT_COLOUR}Where in the room do you check? There are 3 spots, there's a pillowcase, there's the vase, and there is behind the curtain.{RESET} ").upper
+        if where == "BEHIND THE CURTAIN":
           typing("Wrong place, try again.\n")
-        elif where == "the vase":
+        elif where == "THE VASE":
           typing("Wrong place, try again.\n")
-        elif where == "a pillowcase":
+        elif where == "A PILLOWCASE":
           typing("You checked the pillowcase, and you found the key\n")
-          print(' ')
           #get bedroom key
           have_bedroom_key = 'true'
           break
         else:
           print("that isn't a valid option")
           #open the door
-  elif search == "try the door":
+  elif search == "TRY THE DOOR":
       typing2("The door won't budge.\n")
       if have_bedroom_key == 'true':
         key_used = input(f"{INPUT_COLOUR}Try the key?{RESET} ").upper()
@@ -73,14 +71,14 @@ while True:
 #enter the hallway
 typing("You are now in the manor's hallway, there's doors to every room in the mansion, though the door to the dining room is the only open one\n")
 while True:
-  rooms = input(f"{INPUT_COLOUR}Where do you go (dining room or bedroom)?{RESET} ")
+  rooms = input(f"{INPUT_COLOUR}Where do you go, the dining room or  the bedroom)?{RESET} ").upper()
 
   #go back to the bedroom
-  if rooms == "bedroom":
+  if rooms == "BEDROOM":
       typing2("You go back into the bedroom, you don't find anything there.\n")
 
 #go to dining room
-  elif rooms == "dining room":
+  elif rooms == "DINING ROOM":
       typing2("You explore the dining room and you find a vase.\n")
 
 #end the timer and print the time it took for the program to run
