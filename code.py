@@ -22,12 +22,13 @@ def typing2(text, delay=0.07):
         time.sleep(delay)
 
 #print original text/backstory
-typing("You were on a hike in the alps. \n You felt the cold snow beneath your boots, you were doing well on the hike, but then you slipped and hit your head on the ice, and you fell unconscious. \n Now you've woken up here, in the bedroom of a strange manor.")
+typing(" You were on a hike in the alps. \n You felt the cold snow beneath your boots, you were doing well on the hike. \n Suddenly you slipped and hit your head on the ice, and you fell unconscious. \n Now you've woken up here, in the bedroom of a strange manor.")
 print()
+print(' ')
 
 #first room
 have_bedroom_key = 'false'
-typing2("You are locked inside an aristocratic bedroom, there's a king size bed next to you with a duvet on it, and theres two comfy looking cushions, you feel like you could sleep here...\n ")
+typing2("You are locked inside an aristocratic bedroom.\nthere's a king size bed next to you with a duvet on it.\nand theres two comfy looking cushions.\nyou feel like you could sleep here...\n ")
 def bedroom_key():
   if have_bedroom_key == 'false':
     typing2("'Now, lets find that key'")
@@ -48,6 +49,7 @@ while True:
           typing("Wrong place, try again.\n")
         elif where == "a pillowcase":
           typing("You checked the pillowcase, and you found the key\n")
+          print(' ')
           #get bedroom key
           have_bedroom_key = 'true'
           break
