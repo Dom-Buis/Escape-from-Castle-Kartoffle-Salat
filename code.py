@@ -22,7 +22,7 @@ def typing2(text, delay=0.07):
         time.sleep(delay)
 
 #print original text/backstory
-typing("You were on a hike in the alps. \n You felt the cold snow beneath your boots, you were doing well on the hike, but then you slipped and hit your head on the ice, and you fell unconscious. \n Now you've woken up here, in the bedroom of a strange manor.")
+typing("You were on a hike in the alps. \nYou felt the cold snow beneath your boots, you were doing well on the hike, but then you slipped and hit your head on the ice, and you fell unconscious. \nNow you've woken up here, in the bedroom of a strange manor.")
 print()
 
 #first room
@@ -47,7 +47,7 @@ while True:
         elif where == "THE VASE":
           typing("Wrong place, try again.\n")
         elif where == "A PILLOWCASE":
-          typing("You checked the pillowcase, and you found the key\n")
+          typing("You checked the pillowcase, and you found the key.\n")
           #get bedroom key
           have_bedroom_key = 'true'
           break
@@ -72,7 +72,7 @@ while True:
 have_kitchen_key = 'false'
 typing("You are now in the manor's hallway,\n there's doors to every room in the mansion, though the door to the dining room is the only open one\n")
 while True:
-  rooms = input(f"{INPUT_COLOUR}Where do you go, the dining room or the bedroom?{RESET}").upper()
+  rooms = input(f"{INPUT_COLOUR}Where do you go, the dining room or the bedroom? {RESET}").upper()
 
   #go back to the bedroom
   if rooms == "BEDROOM":
@@ -83,7 +83,7 @@ while True:
       typing2("You explore the dining room and you find a vase.\n")
       vase = input(f"{INPUT_COLOUR}Do you check the vase?{RESET}").upper()
       if vase == "YES":
-         vase_investigate = input(f"{INPUT_COLOUR}Do you check under the vase, on the sides of the inside of the vase,\n the front of the inside of the vase,\n or the back of the inside of the vase.{RESET}").upper()
+         vase_investigate = input(f"{INPUT_COLOUR}Do you check under the vase, \non the sides of the inside of the vase, \nthe front of the inside of the vase, \nor the back of the inside of the vase.{RESET}").upper()
          if vase_investigate == "UNDER THE VASE":
             typing("You check under the vase,\n you do not find anything there.")
          elif vase_investigate == "THE SIDES OF THE INSIDE OF THE VASE":
