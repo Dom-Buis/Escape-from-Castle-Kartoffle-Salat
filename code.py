@@ -1,4 +1,4 @@
-##import things
+#import things
 import sys
 import time
 
@@ -27,7 +27,7 @@ print()
 
 #first room
 have_bedroom_key = 'false'
-typing2("You are locked inside an aristocratic bedroom.\nthere's a king size bed next to you with a duvet on it.\nand theres two comfy looking cushions.\nyou feel like you could sleep here...\n ")
+typing2("You are locked inside an aristocratic bedroom, there's a king size bed next to you with a duvet on it, and theres two comfy looking cushions, you feel like you could sleep here...\n ")
 def bedroom_key():
   if have_bedroom_key == 'false':
     typing2("'Now, lets find that key'")
@@ -41,7 +41,7 @@ while True:
   if search == "SEARCH THE ROOM":
     while True:
         #code to explore the first room
-        where = input(f"{INPUT_COLOUR}Where in the room do you check? There are 3 spots, there's a pillowcase, there's the vase, and there is behind the curtain.{RESET} ").upper()
+        where = input(f"{INPUT_COLOUR}Where in the room do you check?\n There are 3 spots, there's a pillowcase, there's the vase, and there is behind the curtain.{RESET} ").upper()
         if where == "BEHIND THE CURTAIN":
           typing("Wrong place, try again.\n")
         elif where == "THE VASE":
@@ -69,9 +69,10 @@ while True:
     print("that isn't a valid option")
 
 #enter the hallway
-typing("You are now in the manor's hallway, there's doors to every room in the mansion, though the door to the dining room is the only open one\n")
+have_kitchen_key = 'false'
+typing("You are now in the manor's hallway,\n there's doors to every room in the mansion, though the door to the dining room is the only open one\n")
 while True:
-  rooms = input(f"{INPUT_COLOUR}Where do you go, the dining room or  the bedroom?{RESET}").upper()
+  rooms = input(f"{INPUT_COLOUR}Where do you go, the dining room or the bedroom?{RESET}").upper()
 
   #go back to the bedroom
   if rooms == "BEDROOM":
@@ -80,6 +81,21 @@ while True:
 #go to dining room
   elif rooms == "DINING ROOM":
       typing2("You explore the dining room and you find a vase.\n")
+      vase = input(f"{INPUT_COLOUR}Do you check the vase?{RESET}").upper()
+      if vase == "YES":
+         vase_investigate = input(f"{INPUT_COLOUR}Do you check under the vase, on the sides of the inside of the vase,\n the front of the inside of the vase,\n or the back of the inside of the vase.{RESET}").upper()
+         if vase_investigate == "UNDER THE VASE":
+            typing("You check under the vase,\n you do not find anything there.")
+         elif vase_investigate == "THE SIDES OF THE INSIDE OF THE VASE":
+            typing("You put your hand inside the vase, and scrape the sides,\n you don't find anything")
+         elif vase_investigate == "THE FRONT OF THE INSIDE OF THE VASE":
+            typing("You put your hand into the vase, and you scrape the front of it,\n you find nothing but some old dirt.")
+         elif vase_investigate == "THE BACK OF THE INSIDE OF THE VASE":
+            typing("You put your hand into the vase,\n you feel around the back of the inside of the vase.........\n You find a key to the kitchen")
+            have_kitchen_key = 'true'
+      elif vase  == "NO":
+         typing("Maybe you should check the vase?\n")
+
 
 #end the timer and print the time it took for the program to run
 end = time.time()
