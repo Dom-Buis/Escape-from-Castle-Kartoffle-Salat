@@ -57,7 +57,7 @@ while True:
   elif search == "DOOR":
       typing2("The door won't budge.\n")
       if have_bedroom_key == 'true':
-        key_used = input(f"{INPUT_COLOUR}Try the key?{RESET} ").upper()
+        key_used = input(f"{INPUT_COLOUR}Try the key? \nType 'YES' for yes, or 'NO' for no.{RESET} ").upper()
         if key_used == 'YES':
             typing2("The door opens and you exit the first room.\n")
             break
@@ -83,14 +83,14 @@ while True:
       typing2("You explore the dining room and you find a vase.\n")
       vase = input(f"{INPUT_COLOUR}Do you check the vase?{RESET}").upper()
       if vase == "YES":
-         vase_investigate = input(f"{INPUT_COLOUR}Do you check under the vase, \non the sides of the inside of the vase, \nthe front of the inside of the vase, \nor the back of the inside of the vase.{RESET}").upper()
-         if vase_investigate == "UNDER THE VASE":
+         vase_investigate = input(f"{INPUT_COLOUR}To check under the vase type 'UNDER', \nto check the sides of the inside of the vase type 'SIDES', \nto check the front of the inside of the vase type 'FRONT', \nand to check back of the inside of the vase, type 'BACK'.{RESET}").upper()
+         if vase_investigate == "UNDER":
             typing("You check under the vase,\n you do not find anything there.")
-         elif vase_investigate == "THE SIDES OF THE INSIDE OF THE VASE":
+         elif vase_investigate == "SIDES":
             typing("You put your hand inside the vase, and scrape the sides,\n you don't find anything")
-         elif vase_investigate == "THE FRONT OF THE INSIDE OF THE VASE":
+         elif vase_investigate == "FRONT":
             typing("You put your hand into the vase, and you scrape the front of it,\n you find nothing but some old dirt.")
-         elif vase_investigate == "THE BACK OF THE INSIDE OF THE VASE":
+         elif vase_investigate == "BACK":
             typing("You put your hand into the vase,\n you feel around the back of the inside of the vase.........\n You find a key to the kitchen")
             have_kitchen_key = 'true'
       elif vase  == "NO":
