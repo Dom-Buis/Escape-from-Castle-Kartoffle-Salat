@@ -1,14 +1,14 @@
 #import things
 import sys
 import time
- 
+
 #font colour change for input text
 INPUT_COLOUR = '\033[90m'
 RESET = '\033[0m'
- 
+
 #start the timer
 start = time.time()
- 
+
 #make text typewriter style
 def typing(text, delay=0.1):
     for character in text:
@@ -20,16 +20,16 @@ def typing2(text, delay=0.07):
         sys.stdout.write(character)  
         sys.stdout.flush()            
         time.sleep(delay)
- 
+
 #dictionary for player inventory
 inventory = {"Bedroom Key": False, "Kitchen Key": False}
 #print original text/backstory
 typing("You were on a hike in the alps. You felt the cold snow beneath your boots, \nyou were doing well on the hike, but then you slipped and hit your head on the ice......  \nYou fell unconscious. \nNow you've woken up here, in the bedroom of a strange manor.")
 print()
- 
+
 #first room
 typing2("You are locked inside an aristocratic bedroom, \nthere's a king size bed next to you with a duvet on it, and theres two comfy looking cushions, \nyou feel like you could sleep here...\n")
- 
+
 #code to escape the first room
 typing2("What do you do?\n")
 while True:
@@ -45,7 +45,7 @@ while True:
         elif where == "PILLOWCASE":
           typing("You checked the pillowcase, and you found the key.\n")
           #get bedroom key
-          inventory["Bedroom Key"] = True
+          inventory["Bedroom Key"] =True
           break
         else:
           print("that isn't a valid option")
@@ -63,17 +63,16 @@ while True:
             print("That's not even a option")
   else:
     print("that isn't a valid option")
- 
+
 #enter the hallway
-have_kitchen_key = 'false'
-typing("You are now in the manor's hallway, \nthere's doors to every room in the mansion, \nhough the door to the dining room is the only open one.\n")
+typing("You are now in the manor's hallway, \nthere's doors to every room in the mansion, \nthough the door to the dining room is the only open one.\n")
 while True:
   rooms = input(f"{INPUT_COLOUR}Where do you go, the dining room or the bedroom? {RESET}").upper()
- 
+
   #go back to the bedroom
   if rooms == "BEDROOM":
       typing2("You go back into the bedroom, you don't find anything there.\n")
- 
+
 #go to dining room
   elif rooms == "DINING ROOM":
       typing2("You explore the dining room and you find a vase.\n")
@@ -88,10 +87,10 @@ while True:
             typing("You put your hand into the vase, and you scrape the front of it, \nyou find nothing but some old dirt.")
          elif vase_investigate == "BACK":
             typing("You put your hand into the vase,\n you feel around the back of the inside of the vase......... \nYou find a key to the kitchen")
-            have_kitchen_key = 'true'
+            inventory["Kitchen Key"] = True
       elif vase  == "NO":
          typing("Maybe you should check the vase?\n")
- 
+
  
 #end the timer and print the time it took for the program to run
 end = time.time()
@@ -100,4 +99,3 @@ num = length
 num1 = num/60
 time1 = round(num1, 1)
 print("Program ran for", time1, "minutes")
- 
