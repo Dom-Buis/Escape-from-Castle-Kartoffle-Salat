@@ -22,7 +22,9 @@ def typing2(text, delay=0.07):
         time.sleep(delay)
 
 #print original text/backstory
-typing("You were on a hike in the alps. You felt the cold snow beneath your boots, \nyou were doing well on the hike, but then you slipped and hit your head on the ice......  \nYou fell unconscious. \nNow you've woken up here, in the bedroom of a strange manor.")
+def backstory():
+  typing("You were on a hike in the alps. You felt the cold snow beneath your boots, \nyou were doing well on the hike, but then you slipped and hit your head on the ice......  \nYou fell unconscious. \nNow you've woken up here, in the bedroom of a strange manor.")
+backstory()
 print()
 
 #first room
@@ -38,6 +40,7 @@ def bedroom_key():
 typing2("What do you do?\n")
 while True:
   search = input(f"{INPUT_COLOUR}Do you try the door or do you search the room? \nTo try the door type 'DOOR', and to search the room type 'ROOM'.{RESET} ").upper()
+  print(' ')
   if search == "ROOM":
     while True:
         #code to explore the first room
@@ -70,7 +73,7 @@ while True:
 
 #enter the hallway
 have_kitchen_key = 'false'
-typing("You are now in the manor's hallway, \nthere's doors to every room in the mansion, \nhough the door to the dining room is the only open one.\n")
+typing("You are now in the manor's hallway,\nthere's doors to every room in the mansion, though the door to the dining room is the only open one\n")
 while True:
   rooms = input(f"{INPUT_COLOUR}Where do you go, the dining room or the bedroom? {RESET}").upper()
 
@@ -79,22 +82,26 @@ while True:
       typing2("You go back into the bedroom, you don't find anything there.\n")
 
 #go to dining room
+
   elif rooms == "DINING ROOM":
       typing2("You explore the dining room and you find a vase.\n")
-      vase = input(f"{INPUT_COLOUR}Do you check the vase? {RESET}").upper()
+      vase = input(f"{INPUT_COLOUR}Do you check the vase?{RESET}").upper()
       if vase == "YES":
-         vase_investigate = input(f"{INPUT_COLOUR}To check under the vase type 'UNDER', \nto check the sides of the inside of the vase type 'SIDES', \nto check the front of the inside of the vase type 'FRONT', \nand to check back of the inside of the vase, type 'BACK'. \n{RESET}").upper()
-         if vase_investigate == "UNDER":
-            typing("You check under the vase, \nyou do not find anything there.")
-         elif vase_investigate == "SIDES":
-            typing("You put your hand inside the vase, and scrape the sides, \nyou don't find anything.")
-         elif vase_investigate == "FRONT":
-            typing("You put your hand into the vase, and you scrape the front of it, \nyou find nothing but some old dirt.")
-         elif vase_investigate == "BACK":
-            typing("You put your hand into the vase,\n you feel around the back of the inside of the vase......... \nYou find a key to the kitchen")
-            have_kitchen_key = 'true'
+        while True:
+          vase_investigate = input(f"{INPUT_COLOUR}To check under the vase type 'UNDER', \nto check the sides of the inside of the vase type 'SIDES', \nto check the front of the inside of the vase type 'FRONT', \nand to check back of the inside of the vase, type 'BACK'.{RESET}").upper()
+          if vase_investigate == "UNDER":
+              typing("You check under the vase,\nyou do not find anything there.")
+              break
+          elif vase_investigate == "SIDES":
+              typing("You put your hand inside the vase, and scrape the sides,\nyou don't find anything")
+              break
+          elif vase_investigate == "FRONT":
+              typing("You put your hand into the vase, and you scrape the front of it,\nyou find nothing but some old dirt.")
+          elif vase_investigate == "BACK":
+              typing("You put your hand into the vase,\nyou feel around the back of the inside of the vase.........\nYou find a key to the kitchen")
+              have_kitchen_key = 'true'
       elif vase  == "NO":
-         typing("Maybe you should check the vase?\n")
+        typing("Maybe you should check the vase?\n")
 
 
 #end the timer and print the time it took for the program to run
@@ -104,3 +111,4 @@ num = length
 num1 = num/60
 time1 = round(num1, 1)
 print("Program ran for", time1, "minutes")
+
