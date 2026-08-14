@@ -78,16 +78,18 @@ while True:
       typing2("You explore the dining room and you find a vase.\n")
       vase = input(f"{INPUT_COLOUR}Do you check the vase? {RESET}").upper()
       if vase == "YES":
-         vase_investigate = input(f"{INPUT_COLOUR}To check under the vase type 'UNDER', \nto check the sides of the inside of the vase type 'SIDES', \nto check the front of the inside of the vase type 'FRONT', \nand to check back of the inside of the vase, type 'BACK'. \n{RESET}").upper()
-         if vase_investigate == "UNDER":
-            typing("You check under the vase, \nyou do not find anything there.")
-         elif vase_investigate == "SIDES":
-            typing("You put your hand inside the vase, and scrape the sides, \nyou don't find anything.")
-         elif vase_investigate == "FRONT":
-            typing("You put your hand into the vase, and you scrape the front of it, \nyou find nothing but some old dirt.")
-         elif vase_investigate == "BACK":
-            typing("You put your hand into the vase,\n you feel around the back of the inside of the vase......... \nYou find a key to the kitchen")
-            inventory["Kitchen Key"] = True
+        while True:
+            vase_investigate = input(f"{INPUT_COLOUR}To check under the vase type 'UNDER', \nto check the sides of the inside of the vase type 'SIDES', \nto check the front of the inside of the vase type 'FRONT', \nand to check back of the inside of the vase, type 'BACK'. \n{RESET}").upper()
+            if vase_investigate == "UNDER":
+                typing("You check under the vase, \nyou do not find anything there.")
+            elif vase_investigate == "SIDES":
+                typing("You put your hand inside the vase, and scrape the sides, \nyou don't find anything.")
+            elif vase_investigate == "FRONT":
+                typing("You put your hand into the vase, and you scrape the front of it, \nyou find nothing but some old dirt.")
+            elif vase_investigate == "BACK":
+                typing("You put your hand into the vase,\n you feel around the back of the inside of the vase......... \nYou find a key to the kitchen")
+                inventory["Kitchen Key"] = True
+                break
       elif vase  == "NO":
          typing("Maybe you should check the vase?\n")
 
