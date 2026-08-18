@@ -107,6 +107,8 @@ while True:
         break
       elif investigate == "KNIVES":
          typing("You check the Knife Block, \nyou are a bit clumsy and accidentally cut your finger on a butcher's knife, \nsomehow it didn't draw blood, \nyou still need to find the key however.")
+  elif rooms == "LOUNGE" and inventory["Lounge Key"] == True:
+    typing("You go into the lounge...... \nThere's no clear exit, \nThere's gotta be a way out somewhere, \nMaybe there's a way out in another room.... \n\nBut where?\n")
      
 
  
