@@ -33,15 +33,15 @@ typing2("You are locked inside an aristocratic bedroom, \nthere's a king size be
 #code to escape the first room
 typing2("What do you do?\n")
 while True:
-  search = input(f"{INPUT_COLOUR}Do you try the door or do you search the room? \nTo try the door type 'DOOR', and to search the room type 'ROOM'.{RESET} ").upper()
+  search = input(f"{INPUT_COLOUR}Do you try the door or do you search the room? \nTo try the door type 'DOOR', and to search the room type 'ROOM'. \n{RESET}").upper()
   if search == "ROOM":
     while True:
         #code to explore the first room
-        where = input(f"{INPUT_COLOUR}Where in the room do you check? \nThere are 3 spots, there's a pillowcase, there's the vase, and there is behind the curtain. \nTo check the pillowcase type 'PILLOWCASE'. to check the vase type 'VASE', \nand to check behind the curtain type 'CURTAIN'.{RESET} ").upper()
+        where = input(f"{INPUT_COLOUR}Where in the room do you check? \nThere are 3 spots, there's a pillowcase, there's the vase, and there is behind the curtain. \nTo check the pillowcase type 'PILLOWCASE'. \nTo check the vase type 'VASE', \nand to check behind the curtain type 'CURTAIN'.{RESET}\n").upper()
         if where == "CURTAIN":
-          typing("Wrong place, try again.\n")
+          typing("You check the curtain and find nothing there.\n")
         elif where == "VASE":
-          typing("Wrong place, try again.\n")
+          typing("You check the vase and get your hand stuck in it, \nyou break the vase on the bedside cabinet.\n")
         elif where == "PILLOWCASE":
           typing("You checked the pillowcase, and you found the key.\n")
           #get bedroom key
@@ -53,9 +53,9 @@ while True:
   elif search == "DOOR":
       typing2("The door won't budge.\n")
       if inventory["Bedroom Key"] == True:
-        key_used = input(f"{INPUT_COLOUR}Try the key? \nType 'YES' for yes, or 'NO' for no.{RESET} ").upper()
+        key_used = input(f"{INPUT_COLOUR}Try the key? \nType 'YES' for yes, or 'NO' for no.\n{RESET} ").upper()
         if key_used == 'YES':
-            typing2("The door opens and you exit the first room.\n")
+            typing2("The door opens and you exit the bedroom.\n")
             break
         elif key_used == 'NO':
             typing("Maybe you should try the key.\n")
@@ -67,9 +67,7 @@ while True:
 #enter the hallway
 typing("You are now in the manor's hallway, \nthere's doors to every room in the mansion, \nthough the door to the dining room is the only open one.\n")
 while True:
-  rooms = input(f"{INPUT_COLOUR}Where do you go, the dining room or the bedroom? {RESET}").upper()
-  if inventory["Kitchen Key"] == True:
-    print("We can also access the Kitchen.")
+  rooms = input(f"{INPUT_COLOUR}Where do you go, the dining room or the bedroom? \n(You can also access the other rooms such as the Kitchen or the Lounge if it has been specified you have the key, \njust type in the name of the room.)\n{RESET}").upper()
 
   #go back to the bedroom
   if rooms == "BEDROOM":
@@ -92,19 +90,19 @@ while True:
             elif vase_investigate == "FRONT":
                 typing("You put your hand into the vase, and you scrape the front of it, \nyou find nothing but some old dirt.")
             elif vase_investigate == "BACK":
-                typing("You put your hand into the vase,\n you feel around the back of the inside of the vase......... \nYou find a key to the kitchen")
+                typing("You put your hand into the vase, \nyou feel around the back of the inside of the vase......... \nYou find a key to the kitchen\n")
                 inventory["Kitchen Key"] = True
                 break
         elif vase  == "NO":
           typing("Maybe you should check the vase?\n")
   elif rooms == "KITCHEN" and inventory["Kitchen Key"] == True:
-     typing2("You walk into the kitchen and you see a fancy kitchen..... \nThere's a smell of baking powder in the air and there's lots of drawers, \nthere is also a potted plant at the side of the room...... \nIt feels a bit out of place.")
+     typing2("You walk into the kitchen and you see a fancy kitchen..... \nThere's a smell of baking powder in the air and there's lots of drawers, \nthere is also a potted plant at the side of the room...... \nIt feels a bit out of place.\n")
      while True:
-      investigate = input(f"{INPUT_COLOUR}Where in the room do you check? \nThere may be a key somewhere, \nif you want to check out the drawers to find the weird baking soda smell type 'BAKING POWDER', \nif you want to check out the potted plant type 'POTTED PLANT', \nthere's also a knife block maybe there's a key hidden in one of the knives...... \nPerhaps you should see what would happen if you typed 'KNIVES'.")
+      investigate = input(f"{INPUT_COLOUR}Where in the room do you check? \nThere may be a key somewhere, \nif you want to check out the drawers to find the weird baking soda smell type 'BAKING POWDER', \nif you want to check out the potted plant type 'POTTED PLANT', \nthere's also a knife block maybe there's a key hidden in one of the knives...... \nPerhaps you should see what would happen if you typed 'KNIVES'.\n{RESET}").upper()
       if investigate == "BAKING POWDER":
-         typing("You check the different drawers in the kitchen, \n you find lots of stuff, \neven a spatula made of gold, \nbut you still can't find the key......")
+         typing("You check the different drawers in the kitchen, \nyou find lots of stuff, \neven a spatula made of gold, \nbut you still can't find the key......")
       elif investigate == "POTTED PLANT":
-        typing("You check the potted plant, \nit's a nice plant, probably some kind of austrian shrub, \nand then you find it..... \nTHE LOUNGE KEY....... \n\n:)")
+        typing("You check the potted plant, \nit's a nice plant, probably some kind of austrian shrub, \nand then you find it..... \nTHE LOUNGE KEY....... \n:)\n\n")
         inventory["Lounge Key"] = True
         break
       elif investigate == "KNIVES":
@@ -120,4 +118,3 @@ num = length
 num1 = num/60
 time1 = round(num1, 1)
 print("Program ran for", time1, "minutes")
-
