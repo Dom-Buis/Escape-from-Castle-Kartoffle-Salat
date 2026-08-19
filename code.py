@@ -48,21 +48,21 @@ while True:
           inventory["Bedroom Key"] =True
           break
         else:
-          print("that isn't a valid option")
+          typing("that isn't a valid option")
           #open the door
   elif search == "DOOR":
       typing2("The door won't budge.\n")
       if inventory["Bedroom Key"] == True:
-        key_used = input(f"{INPUT_COLOUR}Try the key? \nType 'YES' for yes, or 'NO' for no.\n{RESET} ").upper()
+        key_used = input(f"{INPUT_COLOUR}Try the key? \nType 'YES' for yes, or 'NO' for no.\n{RESET}").upper()
         if key_used == 'YES':
             typing2("The door opens and you exit the bedroom.\n")
             break
         elif key_used == 'NO':
             typing("Maybe you should try the key.\n")
         else:
-            print("That's not even a option")
+            typing("That's not even a option.\n")
   else:
-    print("that isn't a valid option")
+    typing("that isn't a valid option")
 
 #enter the hallway
 typing("You are now in the manor's hallway, \nthere's doors to every room in the mansion, \nthough the door to the dining room is the only open one.\n")
@@ -79,7 +79,7 @@ while True:
          typing("You go back into the dining room, it's still a pretty boring room. \nThere's a nice mable table, \naswell as some fancy stained glass cups.")
       elif inventory["Kitchen Key"] == False:
         typing2("You explore the dining room and you find a vase.\n")
-        vase = input(f"{INPUT_COLOUR}Do you check the vase? {RESET}").upper()
+        vase = input(f"{INPUT_COLOUR}Do you check the vase? \n{RESET}").upper()
         if vase == "YES":
           while True:
             vase_investigate = input(f"{INPUT_COLOUR}To check under the vase type 'UNDER', \nto check the sides of the inside of the vase type 'SIDES', \nto check the front of the inside of the vase type 'FRONT', \nand to check back of the inside of the vase, type 'BACK'. \n{RESET}").upper()
@@ -93,12 +93,16 @@ while True:
                 typing("You put your hand into the vase, \nyou feel around the back of the inside of the vase......... \nYou find a key to the kitchen\n")
                 inventory["Kitchen Key"] = True
                 break
+            else:
+               typing("The vase judges you.\n\n\n >:(\n\n")
         elif vase  == "NO":
           typing("Maybe you should check the vase?\n")
+        else:
+          typing("......ITS A YES OR NO???\n")
   elif rooms == "KITCHEN" and inventory["Kitchen Key"] == True:
-     typing2("You walk into the kitchen and you see a fancy kitchen..... \nThere's a smell of baking powder in the air and there's lots of drawers, \nthere is also a potted plant at the side of the room...... \nIt feels a bit out of place.\n")
+     typing2("You walk into the kitchen and you see a fancy kitchen..... \nThere's a smell of baking powder in the air and there's lots of drawers, \nthere is also a potted plant at the side of the room...... \nIt feels a bit out of place. \nOh there's also a knife block maybe there's a key hidden in one of the knives......\n")
      while True:
-      investigate = input(f"{INPUT_COLOUR}Where in the room do you check? \nThere may be a key somewhere, \nif you want to check out the drawers to find the weird baking soda smell type 'BAKING POWDER', \nif you want to check out the potted plant type 'POTTED PLANT', \nthere's also a knife block maybe there's a key hidden in one of the knives...... \nPerhaps you should see what would happen if you typed 'KNIVES'.\n{RESET}").upper()
+      investigate = input(f"{INPUT_COLOUR}Where in the room do you check? \nThere may be a key somewhere, \nif you want to check out the drawers to find the weird baking soda smell type 'BAKING POWDER', \nif you want to check out the potted plant type 'POTTED PLANT', \nPerhaps you should see what would happen if you typed 'KNIVES'.\n{RESET}").upper()
       if investigate == "BAKING POWDER":
          typing("You check the different drawers in the kitchen, \nyou find lots of stuff, \neven a spatula made of gold, \nbut you still can't find the key......")
       elif investigate == "POTTED PLANT":
@@ -107,8 +111,14 @@ while True:
         break
       elif investigate == "KNIVES":
          typing("You check the Knife Block, \nyou are a bit clumsy and accidentally cut your finger on a butcher's knife, \nsomehow it didn't draw blood, \nyou still need to find the key however.")
+      else:
+          typing("try one of the options above, \nor just stop doing typos.\n")
+  elif rooms == "KITCHEN" and inventory["Kitchen Key"] == False:
+    typing("The door won't budge, \nmaybe try to find the Kitchen Key.")
   elif rooms == "LOUNGE" and inventory["Lounge Key"] == True:
-    typing("You go into the lounge...... \nThere's no clear exit, \nThere's gotta be a way out somewhere, \nMaybe there's a way out in another room.... \n\nBut where?\n")
+    typing("You go into the lounge...... \nThere's no clear exit, \nThere's gotta be a way out somewhere, \nMaybe there's a way out in another room.... \n\nBut where?\n\n")
+  else:
+    typing("There aren't any other rooms, \nwas that a typo?")
      
 
  
