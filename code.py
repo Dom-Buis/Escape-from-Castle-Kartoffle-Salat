@@ -110,10 +110,14 @@ elif game == ('SETTINGS'):
         INPUT_COLOUR = '\033[96m'
     if input_text_colour_choice == ('PINK'):
         INPUT_COLOUR = '\033[95m'
+        
+
+
 
 #dictionary for player inventory
 inventory = {"Bedroom Key": False, "Kitchen Key": False, "Lounge Key": False}
 #print original text/backstory
+print(f"{RESET}")
 typing("You were on a hike in the alps. You felt the cold snow beneath your boots, \nyou were doing well on the hike, but then you slipped and hit your head on the ice......  \nYou fell unconscious. \nNow you've woken up here, in the bedroom of a strange manor.")
 print()
 
@@ -221,4 +225,3 @@ num = length
 num1 = num/60
 time1 = round(num1, 1)
 print("Program ran for", time1, "minutes")
-
