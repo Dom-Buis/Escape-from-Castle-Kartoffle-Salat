@@ -2,122 +2,28 @@
 import sys
 import time
 
+#font colour change for input text
+INPUT_COLOUR = '\033[90m'
+RESET = '\033[0m'
+
 #start the timer
 start = time.time()
 
-print('Would you like to start the game or open game settings? (type "game" or "settings")')
-game = input('').upper()
-
-if game == ('GAME'):
-    #font colour change for input text
-    INPUT_COLOUR = '\033[90m'
-    RESET = '\033[0m'
-
-    
-    #make text typewriter style
-    def typing(text, delay=0.1):
-        for character in text:
-            sys.stdout.write(character)  
-            sys.stdout.flush()            
-            time.sleep(delay)
-    def typing2(text, delay=0.07):
-        for character in text:
-            sys.stdout.write(character)  
-            sys.stdout.flush()            
-            time.sleep(delay)
-
-elif game == ('SETTINGS'):
-    print('Please choose text speed: (slow, medium, fast)')
-    text_speed = input('').upper()
-    if text_speed == ('SLOW'):
-        def typing(text, delay=0.15):
-            for character in text:
-                sys.stdout.write(character)  
-                sys.stdout.flush()            
-                time.sleep(delay)
-        def typing2(text, delay=0.12):
-            for character in text:
-                sys.stdout.write(character)  
-                sys.stdout.flush()            
-                time.sleep(delay)
-
-    if text_speed == ('MEDIUM'):
-        def typing(text, delay=0.1):
-            for character in text:
-                sys.stdout.write(character)  
-                sys.stdout.flush()            
-                time.sleep(delay)
-        def typing2(text, delay=0.07):
-            for character in text:
-                sys.stdout.write(character)  
-                sys.stdout.flush()            
-                time.sleep(delay)
-
-    if text_speed == ('FAST'):
-        def typing(text, delay=0.06):
-            for character in text:
-                sys.stdout.write(character)  
-                sys.stdout.flush()            
-                time.sleep(delay)
-        def typing2(text, delay=0.03):
-            for character in text:
-                sys.stdout.write(character)  
-                sys.stdout.flush()            
-                time.sleep(delay)
-            
-    if text_speed == ('SKIP'):
-        def typing(text, delay=0.001):
-            for character in text:
-                sys.stdout.write(character)  
-                sys.stdout.flush()            
-                time.sleep(delay)
-        def typing2(text, delay=0.001):
-            for character in text:
-                sys.stdout.write(character)  
-                sys.stdout.flush()            
-                time.sleep(delay)
-
-    print('Please choose a text colour: (white, grey, red, yellow, green, blue)')
-    text_colour_choice = input('').upper()
-    if text_colour_choice == ('WHITE'):
-        RESET = '\033[0m'
-    if text_colour_choice == ('GREY'):
-        RESET = '\033[90m'
-    if text_colour_choice == ('RED'):
-        RESET = '\033[91m'
-    if text_colour_choice == ('YELLOW'):
-        RESET = '\033[93m'
-    if text_colour_choice == ('GREEN'):
-        RESET = '\033[92m'
-    if text_colour_choice == ('BLUE'):
-        RESET = '\033[96m'
-    if text_colour_choice == ('PINK'):
-        RESET = '\033[95m'
-
-    print('Please choose a input-text colour: (white, grey, red, yellow, green, blue)')
-    input_text_colour_choice = input('').upper()
-    if input_text_colour_choice == ('WHITE'):
-        INPUT_COLOUR = '\033[0m'
-    if input_text_colour_choice == ('GREY'):
-        INPUT_COLOUR = '\033[90m'
-    if input_text_colour_choice == ('RED'):
-        INPUT_COLOUR = '\033[91m'
-    if input_text_colour_choice == ('YELLOW'):
-        INPUT_COLOUR = '\033[93m'
-    if input_text_colour_choice == ('GREEN'):
-        INPUT_COLOUR = '\033[92m'
-    if input_text_colour_choice == ('BLUE'):
-        INPUT_COLOUR = '\033[96m'
-    if input_text_colour_choice == ('PINK'):
-        INPUT_COLOUR = '\033[95m'
-        
-
-
+#make text typewriter style
+def typing(text, delay=0.1):
+    for character in text:
+        sys.stdout.write(character)  
+        sys.stdout.flush()            
+        time.sleep(delay)
+def typing2(text, delay=0.07):
+    for character in text:
+        sys.stdout.write(character)  
+        sys.stdout.flush()            
+        time.sleep(delay)
 
 #dictionary for player inventory
 inventory = {"Bedroom Key": False, "Kitchen Key": False, "Lounge Key": False}
 #print original text/backstory
-print(f"{RESET}")
 typing("You were on a hike in the alps. You felt the cold snow beneath your boots, \nyou were doing well on the hike, but then you slipped and hit your head on the ice......  \nYou fell unconscious. \nNow you've woken up here, in the bedroom of a strange manor.")
 print()
 
@@ -171,6 +77,8 @@ while True:
   elif rooms == "DINING ROOM":
       if inventory["Kitchen Key"] == True:
          typing("You go back into the dining room, it's still a pretty boring room. \nThere's a nice mable table, \naswell as some fancy stained glass cups.\n")
+      elif inventory["Kitchen Key"] == True and inventory["Lounge Key"] == True:
+         typing("You go back into the dining room again, \nyou are upset, \nyou don't know where the exit is, it was meant to be in the lounge...... \n\n\nWait, the rug? \nIs that a trapdoor under it?\n\n")
       elif inventory["Kitchen Key"] == False:
         typing2("You explore the dining room and you find a vase.\n")
         while True:
@@ -212,6 +120,8 @@ while True:
     typing("The door won't budge, \nmaybe try to find the Kitchen Key.\n")
   elif rooms == "LOUNGE" and inventory["Lounge Key"] == True:
     typing("You go into the lounge...... \nThere's no clear exit, \nThere's gotta be a way out somewhere, \nMaybe there's a way out in another room.... \n\nBut where?\n\n")
+  elif rooms == "LOUNGE" and inventory["Lounge Key"] == False:
+     typing("You can't open the door, \nthe exit is in there right?\n")
   else:
     typing("There aren't any other rooms, \nwas that a typo?\n")
      
@@ -225,3 +135,4 @@ num = length
 num1 = num/60
 time1 = round(num1, 1)
 print("Program ran for", time1, "minutes")
+
