@@ -2,24 +2,114 @@
 import sys
 import time
 
-#font colour change for input text
-INPUT_COLOUR = '\033[90m'
-RESET = '\033[0m'
-
 #start the timer
 start = time.time()
 
-#make text typewriter style
-def typing(text, delay=0.1):
-    for character in text:
-        sys.stdout.write(character)  
-        sys.stdout.flush()            
-        time.sleep(delay)
-def typing2(text, delay=0.07):
-    for character in text:
-        sys.stdout.write(character)  
-        sys.stdout.flush()            
-        time.sleep(delay)
+print('Would you like to start the game or open game settings? (type "game" or "settings")')
+game = input('').upper()
+
+if game == ('GAME'):
+    #font colour change for input text
+    INPUT_COLOUR = '\033[90m'
+    RESET = '\033[0m'
+
+    
+    #make text typewriter style
+    def typing(text, delay=0.1):
+        for character in text:
+            sys.stdout.write(character)  
+            sys.stdout.flush()            
+            time.sleep(delay)
+    def typing2(text, delay=0.07):
+        for character in text:
+            sys.stdout.write(character)  
+            sys.stdout.flush()            
+            time.sleep(delay)
+
+elif game == ('SETTINGS'):
+    print('Please choose text speed: (slow, medium, fast)')
+    text_speed = input('').upper()
+    if text_speed == ('SLOW'):
+        def typing(text, delay=0.15):
+            for character in text:
+                sys.stdout.write(character)  
+                sys.stdout.flush()            
+                time.sleep(delay)
+        def typing2(text, delay=0.12):
+            for character in text:
+                sys.stdout.write(character)  
+                sys.stdout.flush()            
+                time.sleep(delay)
+
+    if text_speed == ('MEDIUM'):
+        def typing(text, delay=0.1):
+            for character in text:
+                sys.stdout.write(character)  
+                sys.stdout.flush()            
+                time.sleep(delay)
+        def typing2(text, delay=0.07):
+            for character in text:
+                sys.stdout.write(character)  
+                sys.stdout.flush()            
+                time.sleep(delay)
+
+    if text_speed == ('FAST'):
+        def typing(text, delay=0.06):
+            for character in text:
+                sys.stdout.write(character)  
+                sys.stdout.flush()            
+                time.sleep(delay)
+        def typing2(text, delay=0.03):
+            for character in text:
+                sys.stdout.write(character)  
+                sys.stdout.flush()            
+                time.sleep(delay)
+            
+    if text_speed == ('SKIP'):
+        def typing(text, delay=0.001):
+            for character in text:
+                sys.stdout.write(character)  
+                sys.stdout.flush()            
+                time.sleep(delay)
+        def typing2(text, delay=0.001):
+            for character in text:
+                sys.stdout.write(character)  
+                sys.stdout.flush()            
+                time.sleep(delay)
+
+    print('Please choose a text colour: (white, grey, red, yellow, green, blue)')
+    text_colour_choice = input('').upper()
+    if text_colour_choice == ('WHITE'):
+        RESET = '\033[0m'
+    if text_colour_choice == ('GREY'):
+        RESET = '\033[90m'
+    if text_colour_choice == ('RED'):
+        RESET = '\033[91m'
+    if text_colour_choice == ('YELLOW'):
+        RESET = '\033[93m'
+    if text_colour_choice == ('GREEN'):
+        RESET = '\033[92m'
+    if text_colour_choice == ('BLUE'):
+        RESET = '\033[96m'
+    if text_colour_choice == ('PINK'):
+        RESET = '\033[95m'
+
+    print('Please choose a input-text colour: (white, grey, red, yellow, green, blue)')
+    input_text_colour_choice = input('').upper()
+    if input_text_colour_choice == ('WHITE'):
+        INPUT_COLOUR = '\033[0m'
+    if input_text_colour_choice == ('GREY'):
+        INPUT_COLOUR = '\033[90m'
+    if input_text_colour_choice == ('RED'):
+        INPUT_COLOUR = '\033[91m'
+    if input_text_colour_choice == ('YELLOW'):
+        INPUT_COLOUR = '\033[93m'
+    if input_text_colour_choice == ('GREEN'):
+        INPUT_COLOUR = '\033[92m'
+    if input_text_colour_choice == ('BLUE'):
+        INPUT_COLOUR = '\033[96m'
+    if input_text_colour_choice == ('PINK'):
+        INPUT_COLOUR = '\033[95m'
 
 #dictionary for player inventory
 inventory = {"Bedroom Key": False, "Kitchen Key": False, "Lounge Key": False}
