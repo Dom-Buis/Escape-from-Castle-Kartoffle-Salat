@@ -176,29 +176,27 @@ while True:
       elif inventory["Kitchen Key"] == False:
         typing2("You explore the dining room and you find a vase.\n")
         while True:
-          vase = input(f"{INPUT_COLOUR}Do you check the vase? \n{RESET}").upper()
+          vase = input(f"{INPUT_COLOUR}Do you check the vase? \ntype 'YES' for yes, \ntype 'NO' for no\nor type anything else to exit once you have found the key, \nsuch a example would be something like 'POTATO'.\n{RESET}").upper()
           if vase == "YES":
             while True:
               vase_investigate = input(f"{INPUT_COLOUR}To check under the vase type 'UNDER', \nto check the sides of the inside of the vase type 'SIDES', \nto check the front of the inside of the vase type 'FRONT', \nand to check back of the inside of the vase, type 'BACK'. \n{RESET}").upper()
               if vase_investigate == "UNDER":
                 typing("You check under the vase, \nyou do not find anything there.\n")
-                break
               elif vase_investigate == "SIDES":
                 typing("You put your hand inside the vase, and scrape the sides, \nyou don't find anything.\n")
-                break
               elif vase_investigate == "FRONT":
                 typing("You put your hand into the vase, and you scrape the front of it, \nyou find nothing but some old dirt.\n")
-                break
               elif vase_investigate == "BACK":
                 typing("You put your hand into the vase, \nyou feel around the back of the inside of the vase......... \nYou find a key to the kitchen\n")
                 inventory["Kitchen Key"] = True
+                break
               else:
                 typing("The vase judges you.\n\n\n>:(\n\n")
-                break
           elif vase  == "NO":
             typing("Maybe you should check the vase?\n")
           else:
-            typing("......ITS A YES OR NO???\n")
+            typing("So you want to Exit? \nDon't worry, if you don't want to just put 'DINING ROOM' again.\n\n")
+            break
   elif rooms == "KITCHEN" and inventory["Kitchen Key"] == True:
      typing2("You walk into the kitchen and you see a fancy kitchen..... \nThere's a smell of baking powder in the air and there's lots of drawers, \nthere is also a potted plant at the side of the room...... \nIt feels a bit out of place. \nOh there's also a knife block maybe there's a key hidden in one of the knives......\n")
      while True:
@@ -232,3 +230,4 @@ num = length
 num1 = num/60
 time1 = round(num1, 1)
 print("Program ran for", time1, "minutes")
+
