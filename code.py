@@ -173,30 +173,30 @@ while True:
          typing("You go back into the dining room, it's still a pretty boring room. \nThere's a nice mable table, \naswell as some fancy stained glass cups.\n")
       elif inventory["Kitchen Key"] == True and inventory["Lounge Key"] == True:
          typing("You go back into the dining room again, \nyou are upset, \nyou don't know where the exit is, it was meant to be in the lounge...... \n\n\nWait, the rug? \nIs that a trapdoor under it?\n\n")
+         while True:
+          trapdoor = input(f"{INPUT_COLOUR}You walk over to the trapdoor, you try to open it...... \nIt's locked. \nDo you you try to investigate the trapdoor, or do you just leave? \nTo investigate type 'INVESTIGATE', \nto leave type 'LEAVE'.\n{RESET}")
       elif inventory["Kitchen Key"] == False:
         typing2("You explore the dining room and you find a vase.\n")
-        while True:
-          vase = input(f"{INPUT_COLOUR}Do you check the vase? \ntype 'YES' for yes, \ntype 'NO' for no\nor type anything else to exit once you have found the key, \nsuch a example would be something like 'POTATO'.\n{RESET}").upper()
-          if vase == "YES":
-            while True:
-              vase_investigate = input(f"{INPUT_COLOUR}To check under the vase type 'UNDER', \nto check the sides of the inside of the vase type 'SIDES', \nto check the front of the inside of the vase type 'FRONT', \nand to check back of the inside of the vase, type 'BACK'. \n{RESET}").upper()
-              if vase_investigate == "UNDER":
-                typing("You check under the vase, \nyou do not find anything there.\n")
-              elif vase_investigate == "SIDES":
-                typing("You put your hand inside the vase, and scrape the sides, \nyou don't find anything.\n")
-              elif vase_investigate == "FRONT":
-                typing("You put your hand into the vase, and you scrape the front of it, \nyou find nothing but some old dirt.\n")
-              elif vase_investigate == "BACK":
-                typing("You put your hand into the vase, \nyou feel around the back of the inside of the vase......... \nYou find a key to the kitchen\n")
-                inventory["Kitchen Key"] = True
-                break
-              else:
-                typing("The vase judges you.\n\n\n>:(\n\n")
-          elif vase  == "NO":
-            typing("Maybe you should check the vase?\n")
-          else:
-            typing("So you want to Exit? \nDon't worry, if you don't want to just put 'DINING ROOM' again.\n\n")
-            break
+        vase = input(f"{INPUT_COLOUR}Do you check the vase? \ntype 'YES' for yes, \ntype 'NO' for no.\n{RESET}").upper()
+        if vase == "YES":
+          while True:
+            vase_investigate = input(f"{INPUT_COLOUR}To check under the vase type 'UNDER', \nto check the sides of the inside of the vase type 'SIDES', \nto check the front of the inside of the vase type 'FRONT', \nand to check back of the inside of the vase, type 'BACK'. \n{RESET}").upper()
+            if vase_investigate == "UNDER":
+              typing("You check under the vase, \nyou do not find anything there.\n")
+            elif vase_investigate == "SIDES":
+              typing("You put your hand inside the vase, and scrape the sides, \nyou don't find anything.\n")
+            elif vase_investigate == "FRONT":
+              typing("You put your hand into the vase, and you scrape the front of it, \nyou find nothing but some old dirt.\n")
+            elif vase_investigate == "BACK":
+              typing("You put your hand into the vase, \nyou feel around the back of the inside of the vase......... \nYou find a key to the kitchen\n")
+              inventory["Kitchen Key"] = True
+              break
+            else:
+              typing("The vase judges you.\n\n\n>:(\n\n")
+        elif vase  == "NO":
+          typing("Maybe you should check the vase?\n")
+        else:
+          typing("It's a YES or a NO!?!?!\n\n\n")
   elif rooms == "KITCHEN" and inventory["Kitchen Key"] == True:
      typing2("You walk into the kitchen and you see a fancy kitchen..... \nThere's a smell of baking powder in the air and there's lots of drawers, \nthere is also a potted plant at the side of the room...... \nIt feels a bit out of place. \nOh there's also a knife block maybe there's a key hidden in one of the knives......\n")
      while True:
