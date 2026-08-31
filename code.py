@@ -175,24 +175,34 @@ while True:
          typing("You go back into the dining room, it's still a pretty boring room. \nThere's a nice mable table, \naswell as some fancy stained glass cups.\n")
       elif inventory["Lounge Key"] == True:
          typing("You go back into the dining room again, \nyou are upset, \nyou don't know where the exit is, it was meant to be in the lounge...... \n\n\nWait, the rug? \nIs that a trapdoor under it?\n\n")
-         trapdoor = input(f"{INPUT_COLOUR}You walk over to the trapdoor, you try to open it...... \nIt's locked. \nDo you you try to investigate the trapdoor, or do you just leave? \nTo investigate type 'INVESTIGATE', \nto leave type 'LEAVE'.\n{RESET}").upper()
-         if trapdoor == "INVESTIGATE":
+         while True:
+          trapdoor = input(f"{INPUT_COLOUR}You walk over to the trapdoor, you try to open it...... \nIt's locked. \nDo you you try to investigate the trapdoor, or do you just leave? \nTo investigate type 'INVESTIGATE', \nto leave type 'LEAVE'.\n{RESET}").upper()
+          if trapdoor == "INVESTIGATE":
             typing("You investigate the trapdoor, \nyou find out there are rules to it, \nyou need to input the names of the three keys. \nThat being the 'BEDROOM KEY', \nthe 'KITCHEN KEY', \nand the 'LOUNGE KEY'. \nYou need to input them opposite to the order you got them. \n")
             key1 = input(f"{INPUT_COLOUR}What was the most recent key? \n{RESET}").upper()
             if key1 == "LOUNGE KEY":
               typing("The first one of the three locks on the trapdoor click, \nyou have two left to get through.\n")
               key2 = input(f"{INPUT_COLOUR}What was the 2nd key that you got? \n{RESET}").upper()
+            else:
+              typing("You realize you put in the wrong key and have to try again.")
               if key2 == "KITCHEN KEY":
                  typing("The second of the three locks on the trapdoor click, \nyou have one left to get through.\n")
                  key3 = input(f"{INPUT_COLOUR}What was the first key that you got? \n{RESET}").upper()
+              else:
+                 typing("You realize you put in the wrong key and have to try again.")
                  if key3 == "BEDROOM KEY":
                     typing("The trapdoor opens, and you descend down, \nyou climb down the ladder, \nit goes down, and down, and down, and you enter a hidden room, \nit's moldy and damp, and there's a box in it, \nto open it...... \nYou need the manor director's name.\n")
                     director_name = input(f"{INPUT_COLOUR}What is the Manor Director's name?\n{RESET}").upper()
+                 else:
+                    typing("You realize you put in the wrong key and have to try again.")
                     if director_name == "HALZINGER":
                        typing("You unlock the box, \nyou slowly open it\n you hear the creak of the rusty latch...... \n\nWait, \nis that, \nTHE MANOR KEY.\n")
                        inventory["Manor Key"] = True
+                       break
+                    else:
+                       typing("You try to put that in but the lock on the box doesn't budge.")
 
-         if trapdoor == "LEAVE":
+          if trapdoor == "LEAVE":
             typing("For some reason you decide to leave......\n")
             break
       elif inventory["Kitchen Key"] == False:
