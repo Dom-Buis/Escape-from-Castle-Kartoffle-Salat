@@ -8,6 +8,11 @@ start = time.time()
 print('Would you like to start the game or open game settings? (type "game" or "settings")')
 game = input('').upper()
 
+if game != ('GAME') or ('SETTINGS'):
+    print('Please enter a valid option...\n')
+    print('Would you like to start the game or open game settings? (type "game" or "settings")')
+    game = input('').upper()
+
 if game == ('GAME'):
     #font colour change for input text
     INPUT_COLOUR = '\033[90m'
@@ -111,6 +116,10 @@ elif game == ('SETTINGS'):
     if input_text_colour_choice == ('PINK'):
         INPUT_COLOUR = '\033[95m'
         
+#else:
+   # print('Please enter a valid option...')
+ #   print('Would you like to start the game or open game settings? (type "game" or "settings")')
+#game = input('').upper()
 
 
 
@@ -201,7 +210,6 @@ while True:
                        break
                     else:
                        typing("You try to put that in but the lock on the box doesn't budge.")
-
           if trapdoor == "LEAVE":
             typing("For some reason you decide to leave......\n")
             break
@@ -260,4 +268,3 @@ num = length
 num1 = num/60
 time1 = round(num1, 1)
 print("Program ran for", time1, "minutes")
-
