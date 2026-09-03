@@ -5,24 +5,16 @@ import time
 #start the timer
 start = time.time()
 
-
-#ask the user if they want to start the game at basic settings or change the settings
 print('Would you like to start the game or open game settings? (type "game" or "settings")')
 game = input('').upper()
 
-#ask the user to type either game or settings if they do not enter a valid option
-if game != ('GAME') or ('SETTINGS'):
-    print('Please enter a valid option...\n')
-    print('Would you like to start the game or open game settings? (type "game" or "settings")')
-    game = input('').upper()
-
-#code for if the user just wants to play the game at basic settings without changing the settings
 if game == ('GAME'):
-    #change the colour of text and input text
+    #font colour change for input text
     INPUT_COLOUR = '\033[90m'
     RESET = '\033[0m'
 
-#make text typewriter style text at basic settings
+    
+    #make text typewriter style
     def typing(text, delay=0.1):
         for character in text:
             sys.stdout.write(character)  
@@ -34,13 +26,9 @@ if game == ('GAME'):
             sys.stdout.flush()            
             time.sleep(delay)
 
-
-#code for if the user wants to open and edit the games settings
 elif game == ('SETTINGS'):
-    #ask the user what text speed they want
     print('Please choose text speed: (slow, medium, fast)')
     text_speed = input('').upper()
-    #code for slow text speed
     if text_speed == ('SLOW'):
         def typing(text, delay=0.15):
             for character in text:
@@ -53,7 +41,6 @@ elif game == ('SETTINGS'):
                 sys.stdout.flush()            
                 time.sleep(delay)
 
-#code for medium text speed
     if text_speed == ('MEDIUM'):
         def typing(text, delay=0.1):
             for character in text:
@@ -66,7 +53,6 @@ elif game == ('SETTINGS'):
                 sys.stdout.flush()            
                 time.sleep(delay)
 
-#code for fast text speed
     if text_speed == ('FAST'):
         def typing(text, delay=0.06):
             for character in text:
@@ -79,7 +65,6 @@ elif game == ('SETTINGS'):
                 sys.stdout.flush()            
                 time.sleep(delay)
             
-#code for ultra fast text speed. intended for testing and dev use only
     if text_speed == ('SKIP'):
         def typing(text, delay=0.001):
             for character in text:
@@ -92,7 +77,6 @@ elif game == ('SETTINGS'):
                 sys.stdout.flush()            
                 time.sleep(delay)
 
-#ask the user to choose a text colour and code for all text colours. pink is a secret option :)
     print('Please choose a text colour: (white, grey, red, yellow, green, blue)')
     text_colour_choice = input('').upper()
     if text_colour_choice == ('WHITE'):
@@ -110,7 +94,6 @@ elif game == ('SETTINGS'):
     if text_colour_choice == ('PINK'):
         RESET = '\033[95m'
 
-#ask the user to choose an input text colour and code for all input text colours. pink is still a secret option :). text colour and input text colour can be the same
     print('Please choose a input-text colour: (white, grey, red, yellow, green, blue)')
     input_text_colour_choice = input('').upper()
     if input_text_colour_choice == ('WHITE'):
@@ -130,20 +113,18 @@ elif game == ('SETTINGS'):
         
 
 
+
 #dictionary for player inventory
 inventory = {"Bedroom Key": False, "Kitchen Key": False, "Lounge Key": False, "Manor Key": False}
-
-#main menu and all admin done. into the actual game now
-
 #print original text/backstory
 print(f"{RESET}")
 typing("You were on a hike in the alps. You felt the cold snow beneath your boots, \nyou were doing well on the hike, but then you slipped and hit your head on the ice......  \nYou fell unconscious. \nNow you've woken up here, in the bedroom of a strange manor.")
 print()
 
-#describe the bedroom
+#first room
 typing2("You are locked inside an aristocratic bedroom, \nthere's a king size bed next to you with a duvet on it, and theres two comfy looking cushions, \nyou feel like you could sleep here...\n")
 
-#code to ask what the user wants to do in the first room
+#code to escape the first room
 typing2("What do you do?\n")
 while True:
   search = input(f"{INPUT_COLOUR}Do you try the door or do you search the room? \nTo try the door type 'DOOR', and to search the room type 'ROOM'. \n{RESET}").upper()
@@ -183,62 +164,49 @@ while True:
   rooms = input(f"{INPUT_COLOUR}Where do you go, the dining room or the bedroom? \n(You can also access the other rooms such as the Kitchen or the Lounge if it has been specified you have the key, \njust type in the name of the room.)\n{RESET}").upper()
 
   #go back to the bedroom
-  if rooms == "BEDROOM":
+  if rooms == "BEDROOM" and inventory["Lounge Key"] == False:
       typing2("You go back into the bedroom, you don't find anything there.\n")
   if rooms == "BEDROOM" and inventory["Lounge Key"] == True:
-     typing2("You go back to the bedroom, \nyou see a hairbrush, \nyou didn't notice it before, \nit has the name, Halzinger on it.")
+     typing2("You go back to the bedroom, \nyou see a hairbrush, \nyou didn't notice it before, \nit has the name Halzinger on it. \n")
 
 #go to dining room
   elif rooms == "DINING ROOM":
       if inventory["Kitchen Key"] == True and inventory["Lounge Key"] == False:
-
-        #describe the dining room
          typing("You go back into the dining room, it's still a pretty boring room. \nThere's a nice mable table, \naswell as some fancy stained glass cups.\n")
       elif inventory["Lounge Key"] == True:
-
-        #code for entering in dining room if the user already has the lounge key. they can find the exit here
          typing("You go back into the dining room again, \nyou are upset, \nyou don't know where the exit is, it was meant to be in the lounge...... \n\n\nWait, the rug? \nIs that a trapdoor under it?\n\n")
-         while True:
-
-        #the user finds the trapdoor to escape
-          trapdoor = input(f"{INPUT_COLOUR}You walk over to the trapdoor, you try to open it...... \nIt's locked. \nDo you you try to investigate the trapdoor, or do you just leave? \nTo investigate type 'INVESTIGATE', \nto leave type 'LEAVE'.\n{RESET}").upper()
-          if trapdoor == "INVESTIGATE":
+         trapdoor = input(f"{INPUT_COLOUR}You walk over to the trapdoor, you try to open it...... \nIt's locked. \nDo you you try to investigate the trapdoor, or do you just leave? \nTo investigate type 'INVESTIGATE', \nto leave type 'LEAVE'.\n{RESET}").upper()
+         if trapdoor == "INVESTIGATE":
             typing("You investigate the trapdoor, \nyou find out there are rules to it, \nyou need to input the names of the three keys. \nThat being the 'BEDROOM KEY', \nthe 'KITCHEN KEY', \nand the 'LOUNGE KEY'. \nYou need to input them opposite to the order you got them. \n")
-            key1 = input(f"{INPUT_COLOUR}What was the most recent key? \n{RESET}").upper()
-            if key1 == "LOUNGE KEY":
-              typing("The first one of the three locks on the trapdoor click, \nyou have two left to get through.\n")
-              key2 = input(f"{INPUT_COLOUR}What was the 2nd key that you got? \n{RESET}").upper()
-            else:
-              typing("You realize you put in the wrong key and have to try again.")
-              if key2 == "KITCHEN KEY":
-                 typing("The second of the three locks on the trapdoor click, \nyou have one left to get through.\n")
-                 key3 = input(f"{INPUT_COLOUR}What was the first key that you got? \n{RESET}").upper()
-              else:
-                 typing("You realize you put in the wrong key and have to try again.")
-                 if key3 == "BEDROOM KEY":
-                    typing("The trapdoor opens, and you descend down, \nyou climb down the ladder, \nit goes down, and down, and down, and you enter a hidden room, \nit's moldy and damp, and there's a box in it, \nto open it...... \nYou need the manor director's name.\n")
-                    director_name = input(f"{INPUT_COLOUR}What is the Manor Director's name?\n{RESET}").upper()
-                 else:
-                    typing("You realize you put in the wrong key and have to try again.")
-                    if director_name == "HALZINGER":
-                       typing("You unlock the box, \nyou slowly open it\n you hear the creak of the rusty latch...... \n\nWait, \nis that, \nTHE MANOR KEY.\n")
-                       inventory["Manor Key"] = True
-                       break
-                    else:
-                       typing("You try to put that in but the lock on the box doesn't budge.")
-          if trapdoor == "LEAVE":
-            typing("For some reason you decide to leave......\n")
-            break
-      elif inventory["Kitchen Key"] == False:
+            while True:
+              key1 = input(f"{INPUT_COLOUR}What was the most recent key? \n{RESET}").upper()
+              if key1 == "LOUNGE KEY":
+                typing("The first one of the three locks on the trapdoor click, \nyou have two left to get through.\n")
+                while True:
+                    key2 = input(f"{INPUT_COLOUR}What was the 2nd key that you got? \n{RESET}").upper()
+                    if key2 == "KITCHEN KEY":
+                      typing("The second of the three locks on the trapdoor click, \nyou have one left to get through.\n")
+                      while True:
+                        key3 = input(f"{INPUT_COLOUR}What was the first key that you got? \n{RESET}").upper()
+                        if key3 == "BEDROOM KEY":
+                          typing("The trapdoor opens, and you descend down, \nyou climb down the ladder, \nit goes down, and down, and down, and you enter a hidden room, \nit's moldy and damp, and there's a box in it, \nto open it...... \nYou need the manor director's name.\n")
+                          while True:
+                            director_name = input(f"{INPUT_COLOUR}What is the Manor Director's name?\n{RESET}").upper()
+                            if director_name == "HALZINGER":
+                              typing("You unlock the box, \nyou slowly open it\n you hear the creak of the rusty latch...... \n\nWait, \nis that, \nTHE MANOR KEY.\n")
+                              inventory["Manor Key"] = True
+                              break
+                            else:
+                              typing("You try to put that in but the lock on the box doesn't budge.")
 
-        #finding vase in the dining room
+         if trapdoor == "LEAVE":
+          typing("For some reason you decide to leave......\n")
+          break
+      elif inventory["Kitchen Key"] == False:
         typing2("You explore the dining room and you find a vase.\n")
-        #ask if the user wants to investiage the vase
         vase = input(f"{INPUT_COLOUR}Do you check the vase? \ntype 'YES' for yes, \ntype 'NO' for no.\n{RESET}").upper()
         if vase == "YES":
           while True:
-
-            #ask where in the vase the user wants to look
             vase_investigate = input(f"{INPUT_COLOUR}To check under the vase type 'UNDER', \nto check the sides of the inside of the vase type 'SIDES', \nto check the front of the inside of the vase type 'FRONT', \nand to check back of the inside of the vase, type 'BACK'. \n{RESET}").upper()
             if vase_investigate == "UNDER":
               typing("You check under the vase, \nyou do not find anything there.\n")
@@ -247,25 +215,18 @@ while True:
             elif vase_investigate == "FRONT":
               typing("You put your hand into the vase, and you scrape the front of it, \nyou find nothing but some old dirt.\n")
             elif vase_investigate == "BACK":
-                #find the kitchen key in the back of the vase
               typing("You put your hand into the vase, \nyou feel around the back of the inside of the vase......... \nYou find a key to the kitchen\n")
               inventory["Kitchen Key"] = True
               break
             else:
-                #code for if the user enters and invalid option
               typing("The vase judges you.\n\n\n>:(\n\n")
         elif vase  == "NO":
           typing("Maybe you should check the vase?\n")
         else:
           typing("It's a YES or a NO!?!?!\n\n\n")
-
-
-
   elif rooms == "KITCHEN" and inventory["Kitchen Key"] == True:
-    #entering the kitchen
      typing2("You walk into the kitchen and you see a fancy kitchen..... \nThere's a smell of baking powder in the air and there's lots of drawers, \nthere is also a potted plant at the side of the room...... \nIt feels a bit out of place. \nOh there's also a knife block maybe there's a key hidden in one of the knives......\n")
      while True:
-        #ask what the user wants to do in the kitchen
       investigate = input(f"{INPUT_COLOUR}Where in the room do you check? \nThere may be a key somewhere, \nif you want to check out the drawers to find the weird baking soda smell type 'BAKING POWDER', \nif you want to check out the potted plant type 'POTTED PLANT', \nPerhaps you should see what would happen if you typed 'KNIVES'.\n{RESET}").upper()
       if investigate == "BAKING POWDER":
          typing("You check the different drawers in the kitchen, \nyou find lots of stuff, \neven a spatula made of gold, \nbut you still can't find the key......\n")
@@ -281,6 +242,9 @@ while True:
     typing("The door won't budge, \nmaybe try to find the Kitchen Key.\n")
   elif rooms == "LOUNGE" and inventory["Lounge Key"] == True:
     typing("You go into the lounge...... \nThere's no clear exit, \nThere's gotta be a way out somewhere, \nMaybe there's a way out in another room.... \n\nBut where?\n\n")
+  elif rooms == "LOUNGE" and inventory["Manor Key"] == True:
+    typing("You go back into the lounge, \nyou look around one last time, \nyou wince \nhopefully this isn't a trap, \nyou put the Manor's key into the lock of the front door............ \n.................. \nIT UNLOCKS. \n\n\n\nCONGRATULATIONS! \nYOU BEAT ESCAPE FROM CASTLE KARTOFFLE SALAT!\n\n")
+    break
   elif rooms == "LOUNGE" and inventory["Lounge Key"] == False:
      typing("You can't open the door, \nthe exit is in there right?\n")
   else:
