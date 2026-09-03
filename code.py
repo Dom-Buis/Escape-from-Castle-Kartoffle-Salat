@@ -5,16 +5,24 @@ import time
 #start the timer
 start = time.time()
 
+
+#ask the user if they want to start the game at basic settings or change the settings
 print('Would you like to start the game or open game settings? (type "game" or "settings")')
 game = input('').upper()
 
+#ask the user to type either game or settings if they do not enter a valid option
+if game != ('GAME') or ('SETTINGS'):
+    print('Please enter a valid option...\n')
+    print('Would you like to start the game or open game settings? (type "game" or "settings")')
+    game = input('').upper()
+
+#code for if the user just wants to play the game at basic settings without changing the settings
 if game == ('GAME'):
-    #font colour change for input text
+    #change the colour of text and input text
     INPUT_COLOUR = '\033[90m'
     RESET = '\033[0m'
 
-    
-    #make text typewriter style
+#make text typewriter style text at basic settings
     def typing(text, delay=0.1):
         for character in text:
             sys.stdout.write(character)  
@@ -26,9 +34,13 @@ if game == ('GAME'):
             sys.stdout.flush()            
             time.sleep(delay)
 
+
+#code for if the user wants to open and edit the games settings
 elif game == ('SETTINGS'):
+    #ask the user what text speed they want
     print('Please choose text speed: (slow, medium, fast)')
     text_speed = input('').upper()
+    #code for slow text speed
     if text_speed == ('SLOW'):
         def typing(text, delay=0.15):
             for character in text:
@@ -41,6 +53,7 @@ elif game == ('SETTINGS'):
                 sys.stdout.flush()            
                 time.sleep(delay)
 
+#code for medium text speed
     if text_speed == ('MEDIUM'):
         def typing(text, delay=0.1):
             for character in text:
@@ -53,6 +66,7 @@ elif game == ('SETTINGS'):
                 sys.stdout.flush()            
                 time.sleep(delay)
 
+#code for fast text speed
     if text_speed == ('FAST'):
         def typing(text, delay=0.06):
             for character in text:
@@ -65,6 +79,7 @@ elif game == ('SETTINGS'):
                 sys.stdout.flush()            
                 time.sleep(delay)
             
+#code for ultra fast text speed. intended for testing and dev use only
     if text_speed == ('SKIP'):
         def typing(text, delay=0.001):
             for character in text:
@@ -77,6 +92,7 @@ elif game == ('SETTINGS'):
                 sys.stdout.flush()            
                 time.sleep(delay)
 
+#ask the user to choose a text colour and code for all text colours. pink is a secret option :)
     print('Please choose a text colour: (white, grey, red, yellow, green, blue)')
     text_colour_choice = input('').upper()
     if text_colour_choice == ('WHITE'):
@@ -94,6 +110,7 @@ elif game == ('SETTINGS'):
     if text_colour_choice == ('PINK'):
         RESET = '\033[95m'
 
+#ask the user to choose an input text colour and code for all input text colours. pink is still a secret option :). text colour and input text colour can be the same
     print('Please choose a input-text colour: (white, grey, red, yellow, green, blue)')
     input_text_colour_choice = input('').upper()
     if input_text_colour_choice == ('WHITE'):
@@ -113,13 +130,16 @@ elif game == ('SETTINGS'):
         
 
 
-
 #dictionary for player inventory
 inventory = {"Bedroom Key": False, "Kitchen Key": False, "Lounge Key": False, "Manor Key": False}
+
+#main menu and all admin done. into the actual game now
+
 #print original text/backstory
 print(f"{RESET}")
 typing("You were on a hike in the alps. You felt the cold snow beneath your boots, \nyou were doing well on the hike, but then you slipped and hit your head on the ice......  \nYou fell unconscious. \nNow you've woken up here, in the bedroom of a strange manor.")
 print()
+
 
 #first room
 typing2("You are locked inside an aristocratic bedroom, \nthere's a king size bed next to you with a duvet on it, and theres two comfy looking cushions, \nyou feel like you could sleep here...\n")
