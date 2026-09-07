@@ -178,30 +178,21 @@ while True:
          trapdoor = input(f"{INPUT_COLOUR}You walk over to the trapdoor, you try to open it...... \nIt's locked. \nDo you you try to investigate the trapdoor, or do you just leave? \nTo investigate type 'INVESTIGATE', \nto leave type 'LEAVE'.\n{RESET}").upper()
          if trapdoor == "INVESTIGATE":
             typing("You investigate the trapdoor, \nyou find out there are rules to it, \nyou need to input the names of the three keys. \nThat being the 'BEDROOM KEY', \nthe 'KITCHEN KEY', \nand the 'LOUNGE KEY'. \nYou need to input them opposite to the order you got them. \n")
-            while True:
-              key1 = input(f"{INPUT_COLOUR}What was the most recent key? \n{RESET}").upper()
-              if key1 == "LOUNGE KEY":
-                typing("The first one of the three locks on the trapdoor click, \nyou have two left to get through.\n")
-                while True:
-                    key2 = input(f"{INPUT_COLOUR}What was the 2nd key that you got? \n{RESET}").upper()
-                    if key2 == "KITCHEN KEY":
-                      typing("The second of the three locks on the trapdoor click, \nyou have one left to get through.\n")
-                      while True:
-                        key3 = input(f"{INPUT_COLOUR}What was the first key that you got? \n{RESET}").upper()
-                        if key3 == "BEDROOM KEY":
-                          typing("The trapdoor opens, and you descend down, \nyou climb down the ladder, \nit goes down, and down, and down, and you enter a hidden room, \nit's moldy and damp, and there's a box in it, \nto open it...... \nYou need the manor director's name.\n")
-                          while True:
-                            director_name = input(f"{INPUT_COLOUR}What is the Manor Director's name?\n{RESET}").upper()
-                            if director_name == "HALZINGER":
-                              typing("You unlock the box, \nyou slowly open it\n you hear the creak of the rusty latch...... \n\nWait, \nis that, \nTHE MANOR KEY.\n")
-                              inventory["Manor Key"] = True
-                              break
-                            else:
-                              typing("You try to put that in but the lock on the box doesn't budge.")
-
+            key1 = input(f"{INPUT_COLOUR}What was the most recent key? \n{RESET}").upper()
+            if key1 == "LOUNGE KEY":
+              typing("The first one of the three locks on the trapdoor click, \nyou have two left to get through.\n")
+              key2 = input(f"{INPUT_COLOUR}What was the 2nd key that you got? \n{RESET}").upper()
+              if key2 == "KITCHEN KEY":
+                typing("The second of the three locks on the trapdoor click, \nyou have one left to get through.\n")
+                key3 = input(f"{INPUT_COLOUR}What was the first key that you got? \n{RESET}").upper()
+                if key3 == "BEDROOM KEY":
+                  typing("The trapdoor opens, and you descend down, \nyou climb down the ladder, \nit goes down, and down, and down, and you enter a hidden room, \nit's moldy and damp, and there's a box in it, \nto open it...... \nYou need the manor director's name.\n")
+                  director_name = input(f"{INPUT_COLOUR}What is the Manor Director's name?\n{RESET}").upper()
+                  if director_name == "HALZINGER":
+                    typing("You unlock the box, \nyou slowly open it\n you hear the creak of the rusty latch...... \n\nWait, \nis that, \nTHE MANOR KEY.\n")
+                    inventory["Manor Key"] = True
          if trapdoor == "LEAVE":
           typing("For some reason you decide to leave......\n")
-          break
       elif inventory["Kitchen Key"] == False:
         typing2("You explore the dining room and you find a vase.\n")
         vase = input(f"{INPUT_COLOUR}Do you check the vase? \ntype 'YES' for yes, \ntype 'NO' for no.\n{RESET}").upper()
@@ -231,7 +222,7 @@ while True:
       if investigate == "BAKING POWDER":
          typing("You check the different drawers in the kitchen, \nyou find lots of stuff, \neven a spatula made of gold, \nbut you still can't find the key......\n")
       elif investigate == "POTTED PLANT":
-        typing("You check the potted plant, \nit's a nice plant, probably some kind of austrian shrub, \nand then you find it..... \nTHE LOUNGE KEY....... \n:)\n\n")
+        typing("You check the potted plant, \nit's a nice plant, \nprobably some kind of austrian shrub, \nand then you find it..... \nTHE LOUNGE KEY....... \n:)\n\n")
         inventory["Lounge Key"] = True
         break
       elif investigate == "KNIVES":
@@ -240,7 +231,7 @@ while True:
           typing("try one of the options above, \nor just stop doing typos.\n")
   elif rooms == "KITCHEN" and inventory["Kitchen Key"] == False:
     typing("The door won't budge, \nmaybe try to find the Kitchen Key.\n")
-  elif rooms == "LOUNGE" and inventory["Lounge Key"] == True:
+  elif rooms == "LOUNGE" and inventory["Lounge Key"] == True and inventory["Manor Key"] == False:
     typing("You go into the lounge...... \nThere's no clear exit, \nThere's gotta be a way out somewhere, \nMaybe there's a way out in another room.... \n\nBut where?\n\n")
   elif rooms == "LOUNGE" and inventory["Manor Key"] == True:
     typing("You go back into the lounge, \nyou look around one last time, \nyou wince \nhopefully this isn't a trap, \nyou put the Manor's key into the lock of the front door............ \n.................. \nIT UNLOCKS. \n\n\n\nCONGRATULATIONS! \nYOU BEAT ESCAPE FROM CASTLE KARTOFFLE SALAT!\n\n")
@@ -260,3 +251,4 @@ num = length
 num1 = num/60
 time1 = round(num1, 1)
 print("Program ran for", time1, "minutes")
+
