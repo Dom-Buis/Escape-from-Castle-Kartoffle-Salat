@@ -272,3 +272,10 @@ num1 = num/60
 time1 = round(num1, 1)
 print("Program ran for", time1, "minutes")
 
+#epilogue
+def epilogue(typing):
+   typing("\n\nAs you leave the Manor, \nor is it a castle? \nYou see some ice, \nit's quite cold....... \n\nYou notice that the castle is on a hill, \nyou walk down it.")
+   typing("\nYou reach the bottom of the hill, \nyou find some small cottages, \nyou keep walking, \nfurther, \nfurther, \nand further still........ \nuntil, ")
+   typing("\nyou find a small police checkpoint, \nand, \nyou report the Manor Director, \nHalzinger, to the cops...... \nhopefully he'll get arrested....\n")
+   typing("THE END.")
+ 
