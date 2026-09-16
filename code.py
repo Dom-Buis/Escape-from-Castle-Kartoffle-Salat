@@ -137,8 +137,11 @@ inventory = {"Bedroom Key": False, "Kitchen Key": False, "Lounge Key": False, "M
 
 #print original text/backstory
 print(f"{RESET}")
-typing("You were on a hike in the alps. You felt the cold snow beneath your boots, \nyou were doing well on the hike, but then you slipped and hit your head on the ice......  \nYou fell unconscious. \nNow you've woken up here, in the bedroom of a strange manor.")
 print()
+def introduction(typing):
+  typing("You were on a hike in the alps. You felt the cold snow beneath your boots, \nyou were doing well on the hike, but then you slipped and hit your head on the ice......\n")
+  typing("You fell unconscious. \nNow you've woken up here, in the bedroom of a strange manor.")
+
 
 
 #first room
@@ -270,7 +273,7 @@ length = end - start
 num = length
 num1 = num/60
 time1 = round(num1, 1)
-print("Program ran for", time1, "minutes")
+print("It took you", time1, "minutes to beat the game.")
 
 #epilogue
 def epilogue(typing):
