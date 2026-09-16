@@ -239,7 +239,7 @@ while True:
         else:
           typing("It's a YES or a NO!?!?!\n\n\n")
   elif rooms == "KITCHEN" and inventory["Kitchen Key"] == True:
-     typing2("You walk into the kitchen and you see a fancy kitchen..... \nThere's a smell of baking powder in the air and there's lots of drawers, \nthere is also a potted plant at the side of the room...... \nIt feels a bit out of place. \nOh there's also a knife block maybe there's a key hidden in one of the knives......\n")
+     typing2("You walk into the kitchen and you see a fancy kitchen..... \nThere's a smell of baking powder in the air and there's lots of drawers, \nthere is also a potted plant at the side of the room...... \nIt feels a bit out of place. \nOh there's also a knife block maybe there's a key hidden in one of the knive slots......\n")
      while True:
       investigate = input(f"{INPUT_COLOUR}Where in the room do you check? \nThere may be a key somewhere, \nif you want to check out the drawers to find the weird baking soda smell type 'BAKING POWDER', \nif you want to check out the potted plant type 'POTTED PLANT', \nPerhaps you should see what would happen if you typed 'KNIVES'.\n{RESET}").upper()
       if investigate == "BAKING POWDER":
@@ -281,4 +281,3 @@ def epilogue(typing):
    typing("\nYou reach the bottom of the hill, \nyou find some small cottages, \nyou keep walking, \nfurther, \nfurther, \nand further still........ \nuntil, ")
    typing("\nyou find a small police checkpoint, \nand, \nyou report the Manor Director, \nHalzinger, to the cops...... \nhopefully he'll get arrested....\n")
    typing("THE END.")
- 
