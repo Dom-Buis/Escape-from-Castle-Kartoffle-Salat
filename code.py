@@ -11,7 +11,7 @@ print('Would you like to start the game or open game settings? (type "game" or "
 game = input('').upper()
 
 #ask the user to type either game or settings if they do not enter a valid option
-if game != ('GAME') and game != ("SETTINGS"):
+if game != ('GAME') or ('SETTINGS'):
     print('Please enter a valid option...\n')
     print('Would you like to start the game or open game settings? (type "game" or "settings")')
     game = input('').upper()
@@ -41,10 +41,6 @@ elif game == ('SETTINGS'):
     print('Please choose text speed: (slow, medium, fast)')
     text_speed = input('').upper()
     #code for slow text speed
-    if text_speed != ('SLOW') and text_speed != ('MEDIUM') and text_speed != ('FAST') and text_speed != ('SKIP'):
-        print('Please enter a valid option...\n')
-        print('Please choose text speed: (slow, medium, fast)')
-        game = input('').upper()
     if text_speed == ('SLOW'):
         def typing(text, delay=0.15):
             for character in text:
@@ -99,10 +95,6 @@ elif game == ('SETTINGS'):
 #ask the user to choose a text colour and code for all text colours. pink is a secret option :)
     print('Please choose a text colour: (white, grey, red, yellow, green, blue)')
     text_colour_choice = input('').upper()
-    if text_colour_choice != ('WHITE') and text_colour_choice != ('GREY') and text_colour_choice != ('RED') and text_colour_choice != ('YELLOW') and text_colour_choice != ('GREEN') and text_colour_choice != ('BLUE') and text_colour_choice != ('PINK'):
-        print('Please enter a valid option...\n')
-        print('Please choose a text colour: (white, grey, red, yellow, green, blue)')
-        text_colour_choice = input('').upper()
     if text_colour_choice == ('WHITE'):
         RESET = '\033[0m'
     if text_colour_choice == ('GREY'):
@@ -121,10 +113,6 @@ elif game == ('SETTINGS'):
 #ask the user to choose an input text colour and code for all input text colours. pink is still a secret option :). text colour and input text colour can be the same
     print('Please choose a input-text colour: (white, grey, red, yellow, green, blue)')
     input_text_colour_choice = input('').upper()
-    if input_text_colour_choice != ('WHITE') and input_text_colour_choice != ('GREY') and input_text_colour_choice != ('RED') and input_text_colour_choice != ('YELLOW') and input_text_colour_choice != ('GREEN') and input_text_colour_choice != ('BLUE') and input_text_colour_choice != ('PINK'):
-        print('Please enter a valid option...\n')
-        print('Please choose a input-text colour: (white, grey, red, yellow, green, blue)')
-        input_text_colour_choice = input('').upper()
     if input_text_colour_choice == ('WHITE'):
         INPUT_COLOUR = '\033[0m'
     if input_text_colour_choice == ('GREY'):
@@ -143,13 +131,15 @@ elif game == ('SETTINGS'):
 
 
 #dictionary for player inventory
+#lochlann
 inventory = {"Bedroom Key": False, "Kitchen Key": False, "Lounge Key": False, "Manor Key": False}
-
+achievements = {"You got your hand stuck in a vase, vaseboy.": False, "Why would you do that?": False, "Owie": False, "I AM THE BEST, \nThat's right. Me, \nDonnie T.": False}
 #main menu and all admin done. into the actual game now
 
 #print original text/backstory
 print(f"{RESET}")
 print()
+#lochlann
 def introduction(typing):
   typing("You were on a hike in the alps. You felt the cold snow beneath your boots, \nyou were doing well on the hike, but then you slipped and hit your head on the ice......\n")
   typing("You fell unconscious. \nNow you've woken up here, in the bedroom of a strange manor.")
@@ -171,6 +161,8 @@ while True:
           typing("You check the curtain and find nothing there.\n")
         elif where == "VASE":
           typing("You check the vase and get your hand stuck in it, \nyou break the vase on the bedside cabinet.\n")
+          achievements["You got your hand stuck in a vase, vaseboy."] = True
+          typing("You got the achievement: \n'You got your hand stuck in a vase, vaseboy.' \n")
         elif where == "PILLOWCASE":
           typing("You checked the pillowcase, and you found the key.\n")
           #get bedroom key
@@ -192,15 +184,7 @@ while True:
             typing("That's not even a option.\n")
   else:
     typing("that isn't a valid option\n")
-#check time
-end1 = time.time()
-length1 = end1 - start
-num2 = length1
-num2 = num2/60
-time2 = round(num2, 1)
-if time2 >= 15:
-    typing("As you were working on escaping a loud THUD came from the lounge, \nthen a large, \n\ntall, \n\n\nburly man walked into the house..... \nit's the Manor Director, \nhe walks towards you..... \n\n.... \n\n\nThen, BANG, you're dead! ")
-    sys.exit()
+
 #enter the hallway
 typing("You are now in the manor's hallway, \nthere's doors to every room in the mansion, \nthough the door to the dining room is the only open one.\n")
 while True:
@@ -211,7 +195,6 @@ while True:
       typing2("You go back into the bedroom, you don't find anything there.\n")
   if rooms == "BEDROOM" and inventory["Lounge Key"] == True:
      typing2("You go back to the bedroom, \nyou see a hairbrush, \nyou didn't notice it before, \nit has the name Halzinger on it. \n")
-
 
 #go to dining room
   elif rooms == "DINING ROOM":
@@ -232,9 +215,14 @@ while True:
                 if key3 == "BEDROOM KEY":
                   typing("The trapdoor opens, and you descend down, \nyou climb down the ladder, \nit goes down, and down, and down, and you enter a hidden room, \nit's moldy and damp, and there's a box in it, \nto open it...... \nYou need the manor director's name.\n")
                   director_name = input(f"{INPUT_COLOUR}What is the Manor Director's name?\n{RESET}").upper()
-                  if director_name == "HALZINGER":
-                    typing("You unlock the box, \nyou slowly open it\n you hear the creak of the rusty latch...... \n\nWait, \nis that, \nTHE MANOR KEY.\n")
-                    inventory["Manor Key"] = True
+                  while director_name != "HALZINGER":
+                    if director_name == "HALZINGER":
+                      typing("You unlock the box, \nyou slowly open it\n you hear the creak of the rusty latch...... \n\nWait, \nis that, \nTHE MANOR KEY.\n")
+                      inventory["Manor Key"] = True
+                      break
+                    elif director_name == "TRUMP":
+                       achievements["I AM THE BEST, \nThat's right. Me, \nDonnie T."] = True
+                       typing("You got the achievement: \n'I AM THE BEST, That's right. Me, Donnie T.' \n")
          if trapdoor == "LEAVE":
           typing("For some reason you decide to leave......\n")
       elif inventory["Kitchen Key"] == False:
@@ -242,15 +230,6 @@ while True:
         vase = input(f"{INPUT_COLOUR}Do you check the vase? \ntype 'YES' for yes, \ntype 'NO' for no.\n{RESET}").upper()
         if vase == "YES":
           while True:
-            #check time
-            end1 = time.time()
-            length1 = end1 - start
-            num2 = length1
-            num2 = num2/60
-            time2 = round(num2, 1)
-            if time2 >= 15:
-                    typing("As you were working on escaping a loud THUD came from the lounge, \nthen a large, \n\ntall, \n\n\nburly man walked into the house..... \nit's the Manor Director, \nhe walks towards you..... \n\n.... \n\n\nThen, BANG, you're dead! ")
-                    sys.exit()
             vase_investigate = input(f"{INPUT_COLOUR}To check under the vase type 'UNDER', \nto check the sides of the inside of the vase type 'SIDES', \nto check the front of the inside of the vase type 'FRONT', \nand to check back of the inside of the vase, type 'BACK'. \n{RESET}").upper()
             if vase_investigate == "UNDER":
               typing("You check under the vase, \nyou do not find anything there.\n")
@@ -265,30 +244,25 @@ while True:
             else:
               typing("The vase judges you.\n\n\n>:(\n\n")
         elif vase  == "NO":
+          achievements["Why would you do that?"] = True
           typing("Maybe you should check the vase?\n")
+          typing("You got the achievement: \n'Why would you do that?' \n")
         else:
           typing("It's a YES or a NO!?!?!\n\n\n")
   elif rooms == "KITCHEN" and inventory["Kitchen Key"] == True:
-     typing2("You walk into the kitchen and you see a fancy kitchen..... \nThere's a smell of baking powder in the air and there's lots of drawers, \nthere is also a potted plant at the side of the room...... \nIt feels a bit out of place. \nOh there's also a knife block maybe there's a key hidden in one of the knives......\n")
+     typing2("You walk into the kitchen and you see a fancy kitchen..... \nThere's a smell of baking powder in the air and there's lots of drawers, \nthere is also a potted plant at the side of the room...... \nIt feels a bit out of place. \nOh there's also a knife block maybe there's a key hidden in one of the knive slots......\n")
      while True:
       investigate = input(f"{INPUT_COLOUR}Where in the room do you check? \nThere may be a key somewhere, \nif you want to check out the drawers to find the weird baking soda smell type 'BAKING POWDER', \nif you want to check out the potted plant type 'POTTED PLANT', \nPerhaps you should see what would happen if you typed 'KNIVES'.\n{RESET}").upper()
       if investigate == "BAKING POWDER":
          typing("You check the different drawers in the kitchen, \nyou find lots of stuff, \neven a spatula made of gold, \nbut you still can't find the key......\n")
-         #check time
-         end1 = time.time()
-         length1 = end1 - start
-         num2 = length1
-         num2 = num2/60
-         time2 = round(num2, 1)
-         if time2 >= 15:
-             typing("As you were working on escaping a loud THUD came from the lounge, \nthen a large, \n\ntall, \n\n\nburly man walked into the house..... \nit's the Manor Director, \nhe walks towards you..... \n\n.... \n\n\nThen, BANG, you're dead! ")
-             sys.exit()
       elif investigate == "POTTED PLANT":
         typing("You check the potted plant, \nit's a nice plant, \nprobably some kind of austrian shrub, \nand then you find it..... \nTHE LOUNGE KEY....... \n:)\n\n")
         inventory["Lounge Key"] = True
         break
       elif investigate == "KNIVES":
          typing("You check the Knife Block, \nyou are a bit clumsy and accidentally cut your finger on a butcher's knife, \nsomehow it didn't draw blood, \nyou still need to find the key however.")
+         achievements["Owie"] = True
+         typing("You got the achievement: \n'Owie' \n")
       else:
           typing("try one of the options above, \nor just stop doing typos.\n")
   elif rooms == "KITCHEN" and inventory["Kitchen Key"] == False:
@@ -305,18 +279,32 @@ while True:
      
 
  
-#check time
-end1 = time.time()
-length1 = end1 - start
-num2 = length1
-num2 = num2/60
-time2 = round(num2, 1)
-if time2 >= 15:
-    typing("As you were working on escaping a loud THUD came from the lounge, \nthen a large, \n\ntall, \n\n\nburly man walked into the house..... \nit's the Manor Director, \nhe walks towards you..... \n\n.... \n\n\nThen, BANG, you're dead! ")
-    sys.exit()
+#end the timer and print the time it took for the program to run
+end = time.time()
+
+length = end - start
+num = length
+num1 = num/60
+time1 = round(num1, 1)
+print("It took you", time1, "minutes to beat the game.")
+
+#list_of_achievements
+#lochlann
+def achievements_list(typing):
+   if achievements["You got your hand stuck in a vase, vaseboy."] == True:
+      typing("During the game you got the achievement: \n'You got your hand stuck in a vase, vaseboy.' \n")
+   if achievements["Why would you do that?"] == True:
+      typing("During the game you got the achievement: \n'Why would you do that?' \n")
+   if achievements["Owie"] == True:
+      typing("During the game you got the achievement: \n'Owie' \n")
+   if achievements["I AM THE BEST, \nThat's right. Me, \nDonnie T."] == True:
+      typing("During the game you got the achievement: \n'I AM THE BEST, That's right. Me, Donnie T.' \n")
+      
 #epilogue
+#lochlann
 def epilogue(typing):
    typing("\n\nAs you leave the Manor, \nor is it a castle? \nYou see some ice, \nit's quite cold....... \n\nYou notice that the castle is on a hill, \nyou walk down it.")
    typing("\nYou reach the bottom of the hill, \nyou find some small cottages, \nyou keep walking, \nfurther, \nfurther, \nand further still........ \nuntil, ")
    typing("\nyou find a small police checkpoint, \nand, \nyou report the Manor Director, \nHalzinger, to the cops...... \nhopefully he'll get arrested....\n")
    typing("THE END.")
+ 
