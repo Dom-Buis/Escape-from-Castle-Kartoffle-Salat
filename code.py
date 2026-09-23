@@ -218,13 +218,13 @@ while True:
             #investigation to exit
             typing("You investigate the trapdoor, \nyou find out there are rules to it, \nyou need to input the names of the three keys. \nThat being the 'BEDROOM KEY', \nthe 'KITCHEN KEY', \nand the 'LOUNGE KEY'. \nYou need to input them opposite to the order you got them. \n")
             key1 = input(f"{INPUT_COLOUR}What was the most recent key? \n{RESET}").upper()
-            if key1 == "LOUNGE KEY":
+            if key1 == "LOUNGE KEY" or "LOUNGE":
               typing("The first one of the three locks on the trapdoor click, \nyou have two left to get through.\n")
               key2 = input(f"{INPUT_COLOUR}What was the 2nd key that you got? \n{RESET}").upper()
-              if key2 == "KITCHEN KEY":
+              if key2 == "KITCHEN KEY" or "KITCHEN":
                 typing("The second of the three locks on the trapdoor click, \nyou have one left to get through.\n")
                 key3 = input(f"{INPUT_COLOUR}What was the first key that you got? \n{RESET}").upper()
-                if key3 == "BEDROOM KEY":
+                if key3 == "BEDROOM KEY" or "BEDROOM":
                   typing("The trapdoor opens, and you descend down, \nyou climb down the ladder, \nit goes down, and down, and down, and you enter a hidden room, \nit's moldy and damp, and there's a box in it, \nto open it...... \nYou need the manor director's name.\n")
                   director_name = input(f"{INPUT_COLOUR}What is the Manor Director's name?\n{RESET}").upper()
                   while director_name != "HALZINGER":
@@ -235,6 +235,8 @@ while True:
                     elif director_name == "TRUMP":
                        achievements["I AM THE BEST, \nThat's right. Me, \nDonnie T."] = True
                        typing("You got the achievement: \n'I AM THE BEST, That's right. Me, Donnie T.' \n")
+                    elif director_name != "HALZINGER" or "TRUMP":
+                       typing("That is not the Manor Director's name.")
          if trapdoor == "LEAVE":
           typing("For some reason you decide to leave......\n")
       elif inventory["Kitchen Key"] == False:
