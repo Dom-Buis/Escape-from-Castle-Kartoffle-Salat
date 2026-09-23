@@ -11,7 +11,7 @@ print('Would you like to start the game or open game settings? (type "game" or "
 game = input('').upper()
 
 #ask the user to type either game or settings if they do not enter a valid option
-if game != ('GAME') or ('SETTINGS'):
+if game != ('GAME') and game != ("SETTINGS"):
     print('Please enter a valid option...\n')
     print('Would you like to start the game or open game settings? (type "game" or "settings")')
     game = input('').upper()
@@ -41,6 +41,10 @@ elif game == ('SETTINGS'):
     print('Please choose text speed: (slow, medium, fast)')
     text_speed = input('').upper()
     #code for slow text speed
+    if text_speed != ('SLOW') and text_speed != ('MEDIUM') and text_speed != ('FAST') and text_speed != ('SKIP'):
+        print('Please enter a valid option...\n')
+        print('Please choose text speed: (slow, medium, fast)')
+        game = input('').upper()
     if text_speed == ('SLOW'):
         def typing(text, delay=0.15):
             for character in text:
@@ -95,6 +99,10 @@ elif game == ('SETTINGS'):
 #ask the user to choose a text colour and code for all text colours. pink is a secret option :)
     print('Please choose a text colour: (white, grey, red, yellow, green, blue)')
     text_colour_choice = input('').upper()
+    if text_colour_choice != ('WHITE') and text_colour_choice != ('GREY') and text_colour_choice != ('RED') and text_colour_choice != ('YELLOW') and text_colour_choice != ('GREEN') and text_colour_choice != ('BLUE') and text_colour_choice != ('PINK'):
+        print('Please enter a valid option...\n')
+        print('Please choose a text colour: (white, grey, red, yellow, green, blue)')
+        text_colour_choice = input('').upper()
     if text_colour_choice == ('WHITE'):
         RESET = '\033[0m'
     if text_colour_choice == ('GREY'):
@@ -113,6 +121,10 @@ elif game == ('SETTINGS'):
 #ask the user to choose an input text colour and code for all input text colours. pink is still a secret option :). text colour and input text colour can be the same
     print('Please choose a input-text colour: (white, grey, red, yellow, green, blue)')
     input_text_colour_choice = input('').upper()
+    if input_text_colour_choice != ('WHITE') and input_text_colour_choice != ('GREY') and input_text_colour_choice != ('RED') and input_text_colour_choice != ('YELLOW') and input_text_colour_choice != ('GREEN') and input_text_colour_choice != ('BLUE') and input_text_colour_choice != ('PINK'):
+        print('Please enter a valid option...\n')
+        print('Please choose a input-text colour: (white, grey, red, yellow, green, blue)')
+        input_text_colour_choice = input('').upper()
     if input_text_colour_choice == ('WHITE'):
         INPUT_COLOUR = '\033[0m'
     if input_text_colour_choice == ('GREY'):
@@ -130,19 +142,18 @@ elif game == ('SETTINGS'):
         
 
 
-#dictionary for player inventory
-#lochlann
 inventory = {"Bedroom Key": False, "Kitchen Key": False, "Lounge Key": False, "Manor Key": False}
 achievements = {"You got your hand stuck in a vase, vaseboy.": False, "Why would you do that?": False, "Owie": False, "I AM THE BEST, \nThat's right. Me, \nDonnie T.": False}
 #main menu and all admin done. into the actual game now
 
+
 #print original text/backstory
 print(f"{RESET}")
 print()
-#lochlann
 def introduction(typing):
   typing("You were on a hike in the alps. You felt the cold snow beneath your boots, \nyou were doing well on the hike, but then you slipped and hit your head on the ice......\n")
   typing("You fell unconscious. \nNow you've woken up here, in the bedroom of a strange manor.")
+
 
 
 
