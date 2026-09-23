@@ -11,7 +11,7 @@ print('Would you like to start the game or open game settings? (type "game" or "
 game = input('').upper()
 
 #ask the user to type either game or settings if they do not enter a valid option
-if game != ('GAME') and game != ("SETTINGS"):
+if game != ('GAME') or ('SETTINGS'):
     print('Please enter a valid option...\n')
     print('Would you like to start the game or open game settings? (type "game" or "settings")')
     game = input('').upper()
@@ -41,10 +41,6 @@ elif game == ('SETTINGS'):
     print('Please choose text speed: (slow, medium, fast)')
     text_speed = input('').upper()
     #code for slow text speed
-    if text_speed != ('SLOW') and text_speed != ('MEDIUM') and text_speed != ('FAST') and text_speed != ('SKIP'):
-        print('Please enter a valid option...\n')
-        print('Please choose text speed: (slow, medium, fast)')
-        game = input('').upper()
     if text_speed == ('SLOW'):
         def typing(text, delay=0.15):
             for character in text:
@@ -99,10 +95,6 @@ elif game == ('SETTINGS'):
 #ask the user to choose a text colour and code for all text colours. pink is a secret option :)
     print('Please choose a text colour: (white, grey, red, yellow, green, blue)')
     text_colour_choice = input('').upper()
-    if text_colour_choice != ('WHITE') and text_colour_choice != ('GREY') and text_colour_choice != ('RED') and text_colour_choice != ('YELLOW') and text_colour_choice != ('GREEN') and text_colour_choice != ('BLUE') and text_colour_choice != ('PINK'):
-        print('Please enter a valid option...\n')
-        print('Please choose a text colour: (white, grey, red, yellow, green, blue)')
-        text_colour_choice = input('').upper()
     if text_colour_choice == ('WHITE'):
         RESET = '\033[0m'
     if text_colour_choice == ('GREY'):
@@ -121,10 +113,6 @@ elif game == ('SETTINGS'):
 #ask the user to choose an input text colour and code for all input text colours. pink is still a secret option :). text colour and input text colour can be the same
     print('Please choose a input-text colour: (white, grey, red, yellow, green, blue)')
     input_text_colour_choice = input('').upper()
-    if input_text_colour_choice != ('WHITE') and input_text_colour_choice != ('GREY') and input_text_colour_choice != ('RED') and input_text_colour_choice != ('YELLOW') and input_text_colour_choice != ('GREEN') and input_text_colour_choice != ('BLUE') and input_text_colour_choice != ('PINK'):
-        print('Please enter a valid option...\n')
-        print('Please choose a input-text colour: (white, grey, red, yellow, green, blue)')
-        input_text_colour_choice = input('').upper()
     if input_text_colour_choice == ('WHITE'):
         INPUT_COLOUR = '\033[0m'
     if input_text_colour_choice == ('GREY'):
@@ -142,14 +130,16 @@ elif game == ('SETTINGS'):
         
 
 
+#dictionary for player inventory
+#lochlann
 inventory = {"Bedroom Key": False, "Kitchen Key": False, "Lounge Key": False, "Manor Key": False}
 achievements = {"You got your hand stuck in a vase, vaseboy.": False, "Why would you do that?": False, "Owie": False, "I AM THE BEST, \nThat's right. Me, \nDonnie T.": False}
 #main menu and all admin done. into the actual game now
 
-
 #print original text/backstory
 print(f"{RESET}")
 print()
+#lochlann
 def introduction(typing):
   typing("You were on a hike in the alps. You felt the cold snow beneath your boots, \nyou were doing well on the hike, but then you slipped and hit your head on the ice......\n")
   typing("You fell unconscious. \nNow you've woken up here, in the bedroom of a strange manor.")
@@ -214,6 +204,7 @@ while True:
          typing("You go back into the dining room again, \nyou are upset, \nyou don't know where the exit is, it was meant to be in the lounge...... \n\n\nWait, the rug? \nIs that a trapdoor under it?\n\n")
          trapdoor = input(f"{INPUT_COLOUR}You walk over to the trapdoor, you try to open it...... \nIt's locked. \nDo you you try to investigate the trapdoor, or do you just leave? \nTo investigate type 'INVESTIGATE', \nto leave type 'LEAVE'.\n{RESET}").upper()
          if trapdoor == "INVESTIGATE":
+            #investigation to exit
             typing("You investigate the trapdoor, \nyou find out there are rules to it, \nyou need to input the names of the three keys. \nThat being the 'BEDROOM KEY', \nthe 'KITCHEN KEY', \nand the 'LOUNGE KEY'. \nYou need to input them opposite to the order you got them. \n")
             key1 = input(f"{INPUT_COLOUR}What was the most recent key? \n{RESET}").upper()
             if key1 == "LOUNGE KEY":
@@ -236,6 +227,7 @@ while True:
          if trapdoor == "LEAVE":
           typing("For some reason you decide to leave......\n")
       elif inventory["Kitchen Key"] == False:
+        #check vase
         typing2("You explore the dining room and you find a vase.\n")
         vase = input(f"{INPUT_COLOUR}Do you check the vase? \ntype 'YES' for yes, \ntype 'NO' for no.\n{RESET}").upper()
         if vase == "YES":
@@ -262,6 +254,7 @@ while True:
   elif rooms == "KITCHEN" and inventory["Kitchen Key"] == True:
      typing2("You walk into the kitchen and you see a fancy kitchen..... \nThere's a smell of baking powder in the air and there's lots of drawers, \nthere is also a potted plant at the side of the room...... \nIt feels a bit out of place. \nOh there's also a knife block maybe there's a key hidden in one of the knive slots......\n")
      while True:
+      #kitchen_search
       investigate = input(f"{INPUT_COLOUR}Where in the room do you check? \nThere may be a key somewhere, \nif you want to check out the drawers to find the weird baking soda smell type 'BAKING POWDER', \nif you want to check out the potted plant type 'POTTED PLANT', \nPerhaps you should see what would happen if you typed 'KNIVES'.\n{RESET}").upper()
       if investigate == "BAKING POWDER":
          typing("You check the different drawers in the kitchen, \nyou find lots of stuff, \neven a spatula made of gold, \nbut you still can't find the key......\n")
