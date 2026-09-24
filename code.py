@@ -226,17 +226,17 @@ while True:
                 key3 = input(f"{INPUT_COLOUR}What was the first key that you got? \n{RESET}").upper()
                 if key3 == "BEDROOM KEY" or "BEDROOM":
                   typing("The trapdoor opens, and you descend down, \nyou climb down the ladder, \nit goes down, and down, and down, and you enter a hidden room, \nit's moldy and damp, and there's a box in it, \nto open it...... \nYou need the manor director's name.\n")
-                  director_name = input(f"{INPUT_COLOUR}What is the Manor Director's name?\n{RESET}").upper()
-                  while director_name != "HALZINGER":
+                  while True:
+                    director_name = input(f"{INPUT_COLOUR}What is the Manor Director's name?\n{RESET}").upper()
                     if director_name == "HALZINGER":
-                      typing("You unlock the box, \nyou slowly open it\n you hear the creak of the rusty latch...... \n\nWait, \nis that, \nTHE MANOR KEY.\n")
+                      typing("You unlock the box, \nyou slowly open it \nyou hear the creak of the rusty latch...... \n\nWait, \nis that, \nTHE MANOR KEY.\n")
                       inventory["Manor Key"] = True
                       break
                     elif director_name == "TRUMP":
                        achievements["I AM THE BEST, \nThat's right. Me, \nDonnie T."] = True
                        typing("You got the achievement: \n'I AM THE BEST, That's right. Me, Donnie T.' \n")
                     elif director_name != "HALZINGER" or "TRUMP":
-                       typing("That is not the Manor Director's name.")
+                       typing("That is not the Manor Director's name. \n")
          if trapdoor == "LEAVE":
           typing("For some reason you decide to leave......\n")
       elif inventory["Kitchen Key"] == False:
