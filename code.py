@@ -156,7 +156,6 @@ def introduction(typing):
 
 
 
-
 #first room
 typing2("You are locked inside an aristocratic bedroom, \nthere's a king size bed next to you with a duvet on it, and theres two comfy looking cushions, \nyou feel like you could sleep here...\n")
 
@@ -215,32 +214,28 @@ while True:
          typing("You go back into the dining room again, \nyou are upset, \nyou don't know where the exit is, it was meant to be in the lounge...... \n\n\nWait, the rug? \nIs that a trapdoor under it?\n\n")
          trapdoor = input(f"{INPUT_COLOUR}You walk over to the trapdoor, you try to open it...... \nIt's locked. \nDo you you try to investigate the trapdoor, or do you just leave? \nTo investigate type 'INVESTIGATE', \nto leave type 'LEAVE'.\n{RESET}").upper()
          if trapdoor == "INVESTIGATE":
-            #investigation to exit
             typing("You investigate the trapdoor, \nyou find out there are rules to it, \nyou need to input the names of the three keys. \nThat being the 'BEDROOM KEY', \nthe 'KITCHEN KEY', \nand the 'LOUNGE KEY'. \nYou need to input them opposite to the order you got them. \n")
             key1 = input(f"{INPUT_COLOUR}What was the most recent key? \n{RESET}").upper()
-            if key1 == "LOUNGE KEY" or "LOUNGE":
+            if key1 == "LOUNGE KEY":
               typing("The first one of the three locks on the trapdoor click, \nyou have two left to get through.\n")
               key2 = input(f"{INPUT_COLOUR}What was the 2nd key that you got? \n{RESET}").upper()
-              if key2 == "KITCHEN KEY" or "KITCHEN":
+              if key2 == "KITCHEN KEY":
                 typing("The second of the three locks on the trapdoor click, \nyou have one left to get through.\n")
                 key3 = input(f"{INPUT_COLOUR}What was the first key that you got? \n{RESET}").upper()
-                if key3 == "BEDROOM KEY" or "BEDROOM":
+                if key3 == "BEDROOM KEY":
                   typing("The trapdoor opens, and you descend down, \nyou climb down the ladder, \nit goes down, and down, and down, and you enter a hidden room, \nit's moldy and damp, and there's a box in it, \nto open it...... \nYou need the manor director's name.\n")
-                  while True:
-                    director_name = input(f"{INPUT_COLOUR}What is the Manor Director's name?\n{RESET}").upper()
+                  director_name = input(f"{INPUT_COLOUR}What is the Manor Director's name?\n{RESET}").upper()
+                  while director_name != "HALZINGER":
                     if director_name == "HALZINGER":
-                      typing("You unlock the box, \nyou slowly open it \nyou hear the creak of the rusty latch...... \n\nWait, \nis that, \nTHE MANOR KEY.\n")
+                      typing("You unlock the box, \nyou slowly open it\n you hear the creak of the rusty latch...... \n\nWait, \nis that, \nTHE MANOR KEY.\n")
                       inventory["Manor Key"] = True
                       break
                     elif director_name == "TRUMP":
                        achievements["I AM THE BEST, \nThat's right. Me, \nDonnie T."] = True
                        typing("You got the achievement: \n'I AM THE BEST, That's right. Me, Donnie T.' \n")
-                    elif director_name != "HALZINGER" or "TRUMP":
-                       typing("That is not the Manor Director's name. \n")
          if trapdoor == "LEAVE":
           typing("For some reason you decide to leave......\n")
       elif inventory["Kitchen Key"] == False:
-        #check vase
         typing2("You explore the dining room and you find a vase.\n")
         vase = input(f"{INPUT_COLOUR}Do you check the vase? \ntype 'YES' for yes, \ntype 'NO' for no.\n{RESET}").upper()
         if vase == "YES":
@@ -267,7 +262,6 @@ while True:
   elif rooms == "KITCHEN" and inventory["Kitchen Key"] == True:
      typing2("You walk into the kitchen and you see a fancy kitchen..... \nThere's a smell of baking powder in the air and there's lots of drawers, \nthere is also a potted plant at the side of the room...... \nIt feels a bit out of place. \nOh there's also a knife block maybe there's a key hidden in one of the knive slots......\n")
      while True:
-      #kitchen_search
       investigate = input(f"{INPUT_COLOUR}Where in the room do you check? \nThere may be a key somewhere, \nif you want to check out the drawers to find the weird baking soda smell type 'BAKING POWDER', \nif you want to check out the potted plant type 'POTTED PLANT', \nPerhaps you should see what would happen if you typed 'KNIVES'.\n{RESET}").upper()
       if investigate == "BAKING POWDER":
          typing("You check the different drawers in the kitchen, \nyou find lots of stuff, \neven a spatula made of gold, \nbut you still can't find the key......\n")
